@@ -10,16 +10,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
 <style>
-.leaflet-container { background:#F8F9FA; }
-.leaflet-tile { filter:brightness(1.0) saturate(1.0); }
+.leaflet-container { background:#040B18; }
+.leaflet-tile { filter:brightness(0.85) saturate(1.2); }
 .co2-popup .leaflet-popup-content-wrapper {
-  background:rgba(255,255,255,0.96);border:1px solid var(--border);
+  background:rgba(255,255,255,0.96);border:1px solid rgba(0,229,255,0.25);
   color:#1C1C1C;border-radius:8px;font-family:'DM Mono',monospace;font-size:11px;
 }
 .co2-popup .leaflet-popup-tip { background:rgba(255,255,255,0.96); }
 .vehicle-marker-inner {
   width:14px;height:14px;border-radius:50%;border:2px solid #fff;
-  box-shadow:0 0 0 3px rgba(26,115,232,0.4);
+  box-shadow:0 0 0 3px rgba(0,229,255,0.4);
   animation:markerPulse 2s ease-in-out infinite;
 }
 @keyframes markerPulse{0%,100%{box-shadow:0 0 0 3px rgba(26,115,232,0.4)}50%{box-shadow:0 0 0 6px rgba(0,229,255,0.15)}}
@@ -27,37 +27,36 @@
 <style>
 /* ─── DESIGN SYSTEM ──────────────────────────────────────────────────────── */
 :root {
-  --bg:        #FFFFFF;
-  --bg2:       #F8F9FA;
-  --bg3:       #F1F3F4;
-  --panel:     #E8EAED;
-  --border:    #DADCE0;
-  --border2:   #BBBFC4;
-  --bosch-red: #E20015;
-  --cyan:      #1A73E8;
-  --cyan-dim:  rgba(26,115,232,0.10);
-  --amber:     #E37400;
-  --amber-dim: rgba(227,116,0,0.10);
-  --green:     #188038;
-  --green-dim: rgba(24,128,56,0.10);
-  --red:       #E20015;
-  --violet:    #7B1EA2;
-  --text:      #1C1C1C;
-  --text-2:    #5F6368;
-  --text-3:    #9AA0A6;
+
+  --bg:        #040B18;
+  --bg2:       #071122;
+  --bg3:       #0A1930;
+  --panel:     #0D2040;
+  --border:    rgba(0,229,255,0.12);
+  --border2:   rgba(0,229,255,0.25);
+  --cyan:      #00E5FF;
+  --cyan-dim:  rgba(0,229,255,0.15);
+  --amber:     #FF6D00;
+  --amber-dim: rgba(255,109,0,0.15);
+  --green:     #76FF03;
+  --green-dim: rgba(118,255,3,0.12);
+  --red:       #FF3B3B;
+  --violet:    #C77DFF;
+  --text:      #E8F4FF;
+  --text-2:    #8BACC8;
+  --text-3:    #4A6A85;
   --mono:      "DM Mono", monospace;
   --display:   "Exo 2", sans-serif;
   --body:      "Inter", sans-serif;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
-  --glow-c:    0 0 16px rgba(26,115,232,0.15);
-  --glow-a:    0 0 16px rgba(227,116,0,0.15);
+  --glow-c:    0 0 40px rgba(0,229,255,0.3);
+  --glow-a:    0 0 40px rgba(255,109,0,0.3);
+
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: #FFFFFF;
+  background: var(--bg);
   color: #FFFFFF;
   font-family: var(--body);
   font-size: 15px;
@@ -96,10 +95,9 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 48px; height: 64px;
   background: rgba(4,11,24,0.85);
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(12px);
+  background: rgba(4,11,24,0.92);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 .logo {
   display: flex; align-items: center; gap: 10px;
@@ -164,7 +162,7 @@ nav {
   letter-spacing: -0.04em; margin-bottom: 8px;
   animation: fadeUp 0.8s 0.1s ease both;
 }
-.hero-title .accent { color: var(--red); position: relative; }
+.hero-title .accent { color: var(--cyan); position: relative; }
 .hero-title .accent::after {
   content: attr(data-text);
   position: absolute; inset: 0;
@@ -241,7 +239,7 @@ nav {
 section { position: relative; z-index: 1; padding: 100px 0; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
 .section-label {
-  font-family: var(--mono); font-size: 0.7rem; color: var(--red);
+  font-family: var(--mono); font-size: 0.7rem; color: var(--cyan);
   letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px;
 }
 .section-title {
@@ -254,7 +252,7 @@ section { position: relative; z-index: 1; padding: 100px 0; }
 .reveal.visible { opacity:1; transform:translateY(0); }
 
 /* ─── PROBLEM STRIP ──────────────────────────────────────────────────────── */
-#problem { background: #1C1C1C; border-top: none; border-bottom: 1px solid var(--border); padding: 60px 0; }
+#problem { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 0; }
 .problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
 .problem-card {
   background: var(--bg); padding: 36px 28px;
@@ -267,7 +265,7 @@ section { position: relative; z-index: 1; padding: 100px 0; }
 
 /* ─── USP GRID ───────────────────────────────────────────────────────────── */
 .usp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.usp-card { box-shadow: var(--shadow-sm); 
+.usp-card { box-shadow:none; 
   background: var(--bg2); padding: 36px 28px;
   position: relative; overflow: hidden;
   transition: background 0.3s;
@@ -452,7 +450,7 @@ section { position: relative; z-index: 1; padding: 100px 0; }
 }
 
 /* ─── DATA CREDENTIALS ───────────────────────────────────────────────────── */
-#data { background: #1C1C1C; border-top: none; }
+#data { background: var(--bg2); border-top: 1px solid var(--border); }
 .dataset-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow:hidden; }
 .dataset-card {
   background: var(--bg); padding: 24px 18px; text-align: center;
@@ -496,7 +494,7 @@ table.perf-table { width: 100%; border-collapse: collapse; }
 /* ─── FOOTER ─────────────────────────────────────────────────────────────── */
 footer {
   position: relative; z-index: 1;
-  background: #1C1C1C; border-top: none;
+  background: var(--bg2); border-top: 1px solid var(--border);
   padding: 40px 0;
 }
 .footer-inner {
@@ -555,7 +553,7 @@ footer {
     <h2 class="section-title reveal">The Problem, The Product, The Proof</h2>
 
     <!-- 3-panel story -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:64px;">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;margin-bottom:64px;">
 
       <!-- WHAT -->
       <div style="background:var(--bg);padding:36px 28px;">
@@ -626,7 +624,7 @@ footer {
     </div>
 
     <!-- Market opportunity strip -->
-    <div class="reveal" style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:28px 32px;">
+    <div class="reveal" style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;padding:28px 32px;">
       <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:0;align-items:center;">
         <div>
           <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Fleet Telematics TAM</div>
@@ -893,24 +891,24 @@ footer {
 
         <!-- OBD-II Input -->
         <rect x="24" y="60" width="168" height="64" rx="4" fill="rgba(0,50,100,0.6)" stroke="rgba(0,229,255,0.5)" stroke-width="1.5" class="glow-rect"/>
-        <text x="108" y="84" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#1A73E8" text-anchor="middle">OBD-II Input x^c</text>
+        <text x="108" y="84" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#00E5FF" text-anchor="middle">OBD-II Input x^c</text>
         <text x="108" y="100" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.6)" text-anchor="middle">SAE J1979 · 6 signals</text>
         <text x="108" y="116" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.4)" text-anchor="middle">RPM · Load · Speed · Coolant · Throttle · Accel</text>
 
         <!-- J1939 Input -->
         <rect x="24" y="260" width="168" height="64" rx="4" fill="rgba(80,30,0,0.6)" stroke="rgba(255,109,0,0.5)" stroke-width="1.5"/>
-        <text x="108" y="284" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#E37400" text-anchor="middle">SAE J1939 Input x^k</text>
+        <text x="108" y="284" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#FF6D00" text-anchor="middle">SAE J1939 Input x^k</text>
         <text x="108" y="300" font-family="DM Mono,monospace" font-size="9" fill="rgba(26,115,232,0.15)" text-anchor="middle">14 signals</text>
         <text x="108" y="316" font-family="DM Mono,monospace" font-size="9" fill="rgba(255,109,0,0.4)" text-anchor="middle">+Torque · Gear · IMU · Brake · Clutch</text>
 
         <!-- Encoder Car -->
         <rect x="24" y="148" width="168" height="48" rx="4" fill="rgba(0,40,80,0.8)" stroke="rgba(0,229,255,0.4)" stroke-width="1"/>
-        <text x="108" y="170" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#1C1C1C" text-anchor="middle">Encoder E_c</text>
+        <text x="108" y="170" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#E8F4FF" text-anchor="middle">Encoder E_c</text>
         <text x="108" y="186" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.5)" text-anchor="middle">Linear · ReLU → ℝ⁶⁴</text>
 
         <!-- Encoder Truck -->
         <rect x="24" y="340" width="168" height="48" rx="4" fill="rgba(60,25,0,0.8)" stroke="rgba(255,109,0,0.4)" stroke-width="1"/>
-        <text x="108" y="362" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#1C1C1C" text-anchor="middle">Encoder E_k</text>
+        <text x="108" y="362" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#E8F4FF" text-anchor="middle">Encoder E_k</text>
         <text x="108" y="378" font-family="DM Mono,monospace" font-size="9" fill="rgba(255,109,0,0.5)" text-anchor="middle">Linear · ReLU → ℝ⁶⁴</text>
 
         <!-- Arrows: input to encoder -->
@@ -919,7 +917,7 @@ footer {
 
         <!-- MMD Alignment Node -->
         <rect x="234" y="170" width="168" height="72" rx="4" fill="rgba(40,0,80,0.8)" stroke="rgba(199,125,255,0.6)" stroke-width="1.5"/>
-        <text x="318" y="196" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#7B1EA2" text-anchor="middle">MMD Alignment</text>
+        <text x="318" y="196" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#C77DFF" text-anchor="middle">MMD Alignment</text>
         <text x="318" y="212" font-family="DM Mono,monospace" font-size="9" fill="rgba(199,125,255,0.6)" text-anchor="middle">h^s ∈ ℝ⁶⁴</text>
         <text x="318" y="228" font-family="DM Mono,monospace" font-size="8" fill="rgba(199,125,255,0.4)" text-anchor="middle">Multi-kernel σ²∈{0.125,0.5,1,4}</text>
 
@@ -929,7 +927,7 @@ footer {
 
         <!-- Behavior Features -->
         <rect x="444" y="170" width="108" height="72" rx="4" fill="rgba(0,60,20,0.8)" stroke="rgba(118,255,3,0.5)" stroke-width="1.5"/>
-        <text x="498" y="196" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#188038" text-anchor="middle">Behavior β</text>
+        <text x="498" y="196" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#76FF03" text-anchor="middle">Behavior β</text>
         <text x="498" y="212" font-family="DM Mono,monospace" font-size="8" fill="rgba(118,255,3,0.6)" text-anchor="middle">σ²_a · f_sg · r_idle</text>
         <text x="498" y="226" font-family="DM Mono,monospace" font-size="8" fill="rgba(118,255,3,0.4)" text-anchor="middle">r_hl · H_g  W=64s</text>
 
@@ -948,7 +946,7 @@ footer {
 
         <!-- 3-Layer LSTM -->
         <rect x="589" y="220" width="132" height="80" rx="4" fill="rgba(60,30,0,0.8)" stroke="rgba(26,115,232,0.15)" stroke-width="1.5" class="node-pulse"/>
-        <text x="655" y="248" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#E37400" text-anchor="middle">3-Layer LSTM</text>
+        <text x="655" y="248" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#FF6D00" text-anchor="middle">3-Layer LSTM</text>
         <text x="655" y="264" font-family="DM Mono,monospace" font-size="8" fill="rgba(26,115,232,0.15)" text-anchor="middle">128 → 256 → 128</text>
         <text x="655" y="278" font-family="DM Mono,monospace" font-size="8" fill="rgba(255,109,0,0.4)" text-anchor="middle">LayerNorm · Dropout p=0.2</text>
         <text x="655" y="292" font-family="DM Mono,monospace" font-size="8" fill="rgba(255,109,0,0.3)" text-anchor="middle">h^LSTM ∈ ℝ¹²⁸</text>
@@ -958,22 +956,22 @@ footer {
 
         <!-- Regime Classifier -->
         <rect x="764" y="130" width="172" height="52" rx="4" fill="rgba(0,60,60,0.8)" stroke="rgba(0,229,255,0.4)" stroke-width="1"/>
-        <text x="850" y="152" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="#1A73E8" text-anchor="middle">Regime Classifier ẑₜ</text>
+        <text x="850" y="152" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="#00E5FF" text-anchor="middle">Regime Classifier ẑₜ</text>
         <text x="850" y="168" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.5)" text-anchor="middle">Sigmoid · ẑₜ ∈ [0,1]   F1=0.93</text>
 
         <!-- Motion Head -->
         <rect x="764" y="210" width="172" height="52" rx="4" fill="rgba(0,50,80,0.8)" stroke="rgba(0,229,255,0.5)" stroke-width="1.5"/>
-        <text x="850" y="232" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="#1A73E8" text-anchor="middle">Motion Head ŷ^(m)</text>
+        <text x="850" y="232" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="#00E5FF" text-anchor="middle">Motion Head ŷ^(m)</text>
         <text x="850" y="248" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.5)" text-anchor="middle">g km⁻¹ · Softplus</text>
 
         <!-- Idle Head -->
         <rect x="764" y="290" width="172" height="52" rx="4" fill="rgba(60,30,0,0.8)" stroke="rgba(255,109,0,0.5)" stroke-width="1.5"/>
-        <text x="850" y="312" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="#E37400" text-anchor="middle">Idle Head ŷ^(i)</text>
+        <text x="850" y="312" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="#FF6D00" text-anchor="middle">Idle Head ŷ^(i)</text>
         <text x="850" y="328" font-family="DM Mono,monospace" font-size="9" fill="rgba(255,109,0,0.5)" text-anchor="middle">g min⁻¹ · Softplus</text>
 
         <!-- Gated Output -->
         <rect x="764" y="370" width="172" height="36" rx="4" fill="rgba(0,229,255,0.1)" stroke="rgba(0,229,255,0.6)" stroke-width="1.5"/>
-        <text x="850" y="390" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="#1C1C1C" text-anchor="middle">Gated Output ŷₜ</text>
+        <text x="850" y="390" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="#E8F4FF" text-anchor="middle">Gated Output ŷₜ</text>
         <text x="850" y="400" font-family="DM Mono,monospace" font-size="7.5" fill="rgba(200,220,255,0.5)" text-anchor="middle">ẑ·ŷ^(m) + (1−ẑ)·ŷ^(i)</text>
 
         <!-- Arrows: LSTM to heads -->
@@ -1066,17 +1064,17 @@ footer {
     <p class="section-sub reveal">1-Hz vehicle telemetry using real drive-cycle patterns from the paper&#8217;s 662,249-record dataset. Select a vehicle to observe regime switching, physics-bounded predictions, and trip accumulation.</p>
 
     <!-- Demo Shell — NO reveal class, always visible -->
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+    <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;">
 
       <!-- Header: tabs -->
       <div style="background:var(--panel);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px;">
         <div style="font-family:var(--mono);font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;">&#x2B21; CarbonPilot &middot; Live Telemetry Monitor</div>
         <div id="vTabs" style="display:flex;gap:4px;flex-wrap:wrap;">
           <button onclick="switchVehicle2('car1')"   id="tab-car1"   style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid var(--cyan);border-radius:3px;background:var(--cyan-dim);color:var(--cyan);cursor:pointer;letter-spacing:0.05em;">Car-1 Renault</button>
-          <button onclick="switchVehicle2('car2')"   id="tab-car2"   style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid var(--border);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Car-2 Hyundai</button>
-          <button onclick="switchVehicle2('truck1')" id="tab-truck1" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid var(--border);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-1 EVO</button>
-          <button onclick="switchVehicle2('truck2')" id="tab-truck2" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid var(--border);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-2 FKQ</button>
-          <button onclick="switchVehicle2('truck3')" id="tab-truck3" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid var(--border);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-3 FIL</button>
+          <button onclick="switchVehicle2('car2')"   id="tab-car2"   style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid rgba(0,229,255,0.25);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Car-2 Hyundai</button>
+          <button onclick="switchVehicle2('truck1')" id="tab-truck1" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid rgba(0,229,255,0.25);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-1 EVO</button>
+          <button onclick="switchVehicle2('truck2')" id="tab-truck2" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid rgba(0,229,255,0.25);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-2 FKQ</button>
+          <button onclick="switchVehicle2('truck3')" id="tab-truck3" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid rgba(0,229,255,0.25);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-3 FIL</button>
         </div>
       </div>
 
@@ -1087,7 +1085,7 @@ footer {
         <div>
           <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">CO&#8322; EMISSION &middot; LAST 90 SECONDS</div>
           <!-- CRITICAL: explicit height on parent, canvas fills it -->
-          <div style="position:relative;width:100%;height:260px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;overflow:hidden;">
+          <div style="position:relative;width:100%;height:260px;background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:6px;overflow:hidden;">
             <canvas id="demoChart2"></canvas>
           </div>
           <div style="display:flex;gap:24px;margin-top:10px;">
@@ -1104,7 +1102,7 @@ footer {
         <div style="display:flex;flex-direction:column;gap:12px;">
 
           <!-- CO2 card -->
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px 18px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:16px 18px;">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:4px;">CO&#8322; Prediction</div>
             <div style="display:flex;align-items:baseline;gap:4px;">
               <span id="d2-co2" style="font-family:var(--display);font-size:2rem;font-weight:700;color:var(--cyan);transition:color 0.5s;">—</span>
@@ -1113,7 +1111,7 @@ footer {
           </div>
 
           <!-- Speed + Load -->
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px 18px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:16px 18px;">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:4px;">Speed &nbsp;|&nbsp; RPM &nbsp;|&nbsp; Load</div>
             <div style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--text);">
               <span id="d2-spd">—</span><span style="color:var(--text-3);font-size:0.7rem;"> km/h &nbsp;</span>
@@ -1159,7 +1157,7 @@ footer {
           Willans-bounded &middot; LBCA-Net W=64s &middot; 
           <span style="color:var(--green);font-weight:600;">&#9679; REAL RECORDED DATA</span>
         </div>
-        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:3px;height:4px;width:220px;overflow:hidden;">
+        <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:3px;height:4px;width:220px;overflow:hidden;">
           <div id="d2-prog" style="height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:width 0.8s linear;border-radius:3px;"></div>
         </div>
         <div id="d2-idx" style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);margin-top:4px;">Loading real data...</div>
@@ -1178,7 +1176,7 @@ footer {
 // ═══ DEMO ENGINE — streams REAL vehicle telematics data from the API ════════
 
 const D2_VEHICLES = {
-  car1:   { name:'Car-1 · Renault Sandero', proto:'OBD-II',   color:'#1A73E8', unit:'g/km'  },
+  car1:   { name:'Car-1 · Renault Sandero', proto:'OBD-II',   color:'#00E5FF', unit:'g/km'  },
   car2:   { name:'Car-2 · Hyundai HB20',   proto:'OBD-II',   color:'#188038', unit:'g/km'  },
   truck1: { name:'Truck-1 · EVO 8726',     proto:'SAE J1939', color:'#E37400', unit:'g/km'  },
   truck2: { name:'Truck-2 · FKQ 5624',     proto:'SAE J1939', color:'#E20015', unit:'g/km'  },
@@ -1285,7 +1283,7 @@ function d2SimFallback(vid) {
           coolant:80,is_idle:idle,co2_gkm:co2gkm,co2_gmin:co2gmin,
           regime:idle?'IDLE':'MOTION',idx:0,total:900,
           vehicle:vid,protocol:p.truck?'J1939':'OBD-II',
-          color:'#1A73E8',data_source:'simulated (API unavailable)'};
+          color:'#00E5FF',data_source:'simulated (API unavailable)'};
 }
 
 function d2Render(d) {
@@ -1359,7 +1357,7 @@ function d2InitChart() {
       labels: [],
       datasets: [
         { label:'CO₂ (real)', data:[], yAxisID:'y',
-          borderColor:'#1A73E8', backgroundColor:'rgba(26,115,232,0.08)',
+          borderColor:'#00E5FF', backgroundColor:'#00E5FF18',
           borderWidth:2, pointRadius:0, tension:0.35, fill:true },
         { label:'Speed km/h', data:[], yAxisID:'y2',
           borderColor:'rgba(26,115,232,0.15)', backgroundColor:'transparent',
@@ -1373,7 +1371,7 @@ function d2InitChart() {
         x:{ ticks:{ color:'#4A6A85', font:{family:'DM Mono',size:9}, maxTicksLimit:8 },
             grid:{ color:'rgba(0,229,255,0.05)' }, border:{ color:'rgba(0,229,255,0.08)' } },
         y:{ position:'left', min:0,
-            ticks:{ color:'#1A73E8', font:{family:'DM Mono',size:9} },
+            ticks:{ color:'#00E5FF', font:{family:'DM Mono',size:9} },
             grid:{ color:'rgba(0,229,255,0.06)' },
             title:{ display:true, text:'CO₂ (g/km or g/min)', color:'#4A6A85', font:{family:'DM Mono',size:8} } },
         y2:{ position:'right', min:0,
@@ -1442,8 +1440,8 @@ function d2Start() {
     <!-- Deployment tabs -->
     <div class="reveal" style="margin-bottom:32px;display:flex;gap:4px;">
       <button id="dep-tab-cloud"  onclick="depSwitch('cloud')"  style="font-family:var(--mono);font-size:0.72rem;padding:10px 24px;border:1px solid var(--violet);border-radius:4px;background:rgba(199,125,255,0.12);color:var(--violet);cursor:pointer;transition:all 0.2s;">&#9729; Cloud</button>
-      <button id="dep-tab-edge"   onclick="depSwitch('edge')"   style="font-family:var(--mono);font-size:0.72rem;padding:10px 24px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-3);cursor:pointer;transition:all 0.2s;">&#9670; Edge</button>
-      <button id="dep-tab-hybrid" onclick="depSwitch('hybrid')" style="font-family:var(--mono);font-size:0.72rem;padding:10px 24px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-3);cursor:pointer;transition:all 0.2s;">&#9737; Hybrid ★ Recommended</button>
+      <button id="dep-tab-edge"   onclick="depSwitch('edge')"   style="font-family:var(--mono);font-size:0.72rem;padding:10px 24px;border:1px solid rgba(0,229,255,0.25);border-radius:4px;background:transparent;color:var(--text-3);cursor:pointer;transition:all 0.2s;">&#9670; Edge</button>
+      <button id="dep-tab-hybrid" onclick="depSwitch('hybrid')" style="font-family:var(--mono);font-size:0.72rem;padding:10px 24px;border:1px solid rgba(0,229,255,0.25);border-radius:4px;background:transparent;color:var(--text-3);cursor:pointer;transition:all 0.2s;">&#9737; Hybrid ★ Recommended</button>
     </div>
 
     <!-- Cloud -->
@@ -1451,7 +1449,7 @@ function d2Start() {
       <div style="grid-column:1/-1;background:rgba(199,125,255,0.06);border:1px solid rgba(199,125,255,0.2);border-radius:8px;padding:16px 20px;font-family:var(--mono);font-size:0.72rem;color:var(--violet);">
         <strong>Cloud-only:</strong> Edge device streams raw 1-Hz signals over 4G → Cloud runs LBCA-Net inference → Fleet dashboard updated every second. Simple setup, higher data cost.
       </div>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:24px;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;padding:24px;">
         <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">Render.com (current)</div>
         <div style="font-family:var(--display);font-size:1rem;font-weight:700;margin-bottom:12px;">Free → Starter</div>
         <div style="display:flex;flex-direction:column;gap:7px;font-size:0.82rem;color:var(--text-2);">
@@ -1463,7 +1461,7 @@ function d2Start() {
           <div>&#9679; Cost: <strong style="color:var(--green);">$0/mo</strong> free · $7/mo Starter</div>
         </div>
       </div>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:24px;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;padding:24px;">
         <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">AWS (production)</div>
         <div style="font-family:var(--display);font-size:1rem;font-weight:700;margin-bottom:12px;">t3.small · ECS Fargate</div>
         <div style="display:flex;flex-direction:column;gap:7px;font-size:0.82rem;color:var(--text-2);">
@@ -1475,7 +1473,7 @@ function d2Start() {
           <div>&#9679; Cost: <strong style="color:var(--amber);">~$28/mo</strong> base (t3.small + ALB)</div>
         </div>
       </div>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:24px;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;padding:24px;">
         <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">GCP / Azure</div>
         <div style="font-family:var(--display);font-size:1rem;font-weight:700;margin-bottom:12px;">Cloud Run · App Service</div>
         <div style="display:flex;flex-direction:column;gap:7px;font-size:0.82rem;color:var(--text-2);">
@@ -1488,7 +1486,7 @@ function d2Start() {
         </div>
       </div>
       <!-- Memory table cloud -->
-      <div style="grid-column:1/-1;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+      <div style="grid-column:1/-1;background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:8px;overflow:hidden;">
         <div style="padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.65rem;color:var(--violet);text-transform:uppercase;letter-spacing:0.1em;">Cloud Memory Requirements</div>
         <div style="display:grid;grid-template-columns:repeat(5,1fr);padding:14px 18px;gap:0;border-bottom:1px solid var(--border);">
           <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);">Component</div>
@@ -1521,7 +1519,7 @@ function d2Start() {
             <div>&#9679; Power: 0.4W idle · 1.4W inference</div>
           </div>
         </div>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:24px;position:relative;">
+        <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;padding:24px;position:relative;">
           <div style="position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:0.58rem;padding:2px 8px;background:var(--amber-dim);color:var(--amber);border-radius:3px;">RECOMMENDED</div>
           <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Raspberry Pi 4B / CM4</div>
           <div style="font-family:var(--display);font-size:1rem;font-weight:700;color:var(--amber);margin-bottom:12px;">$35–55 · ARM Cortex-A72</div>
@@ -1535,7 +1533,7 @@ function d2Start() {
             <div>&#9679; Power: 3–7W (vehicle 12V via OBD)</div>
           </div>
         </div>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:24px;position:relative;">
+        <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;padding:24px;position:relative;">
           <div style="position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:0.58rem;padding:2px 8px;background:rgba(118,255,3,0.12);color:var(--green);border-radius:3px;">OEM-GRADE</div>
           <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Telematics Control Unit</div>
           <div style="font-family:var(--display);font-size:1rem;font-weight:700;color:var(--green);margin-bottom:12px;">Bosch TCU / Geotab GO9+</div>
@@ -1551,7 +1549,7 @@ function d2Start() {
         </div>
 
         <!-- Edge step-by-step setup -->
-        <div style="grid-column:1/-1;background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <div style="grid-column:1/-1;background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
           <div style="padding:14px 18px;background:var(--panel);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.65rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;">Edge Setup — Raspberry Pi (5 steps, ~20 min)</div>
           <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);">
             <div style="background:var(--bg2);padding:16px 14px;">
@@ -1583,7 +1581,7 @@ function d2Start() {
         </div>
 
         <!-- Edge memory table -->
-        <div style="grid-column:1/-1;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+        <div style="grid-column:1/-1;background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:8px;overflow:hidden;">
           <div style="padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.65rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;">Edge Memory Requirements (Raspberry Pi Zero 2W — 512 MB RAM)</div>
           <table style="width:100%;border-collapse:collapse;">
             <tr style="background:rgba(0,0,0,0.2);">
@@ -1639,7 +1637,7 @@ function d2Start() {
         <strong>★ Hybrid (Recommended):</strong> Edge device runs inference at 3.1 ms with zero latency and no data cost. Every 32 s it uploads a compressed trip summary (~200 B) via 4G — cutting SIM data usage by 95% vs raw streaming. Cloud aggregates, stores history, and serves the dashboard.
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
           <div style="padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.65rem;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;">Hybrid Architecture — Data Flow</div>
           <div style="padding:20px;">
             <div style="display:flex;flex-direction:column;gap:10px;">
@@ -1660,7 +1658,7 @@ function d2Start() {
             </div>
           </div>
         </div>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
           <div style="padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.65rem;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;">Hybrid vs. Alternatives — Decision Matrix</div>
           <table style="width:100%;border-collapse:collapse;">
             <tr style="background:rgba(0,0,0,0.2);">
@@ -1783,7 +1781,7 @@ function depSwitch(mode) {
       <!-- ── TIER 1: EDGE ─────────────────────────────────────────────── -->
       <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.2);border-radius:10px;overflow:hidden;">
         <div style="background:rgba(0,229,255,0.08);padding:12px 18px;border-bottom:1px solid rgba(0,229,255,0.15);display:flex;align-items:center;gap:8px;">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 1px 4px rgba(26,115,232,0.2);animation:blink 1.4s infinite;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation:blink 1.4s infinite;"></div>
           <div style="font-family:var(--mono);font-size:0.65rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;">Tier 1 · Edge Device</div>
         </div>
         <div style="padding:16px;">
@@ -1791,7 +1789,7 @@ function depSwitch(mode) {
           <!-- Vehicle selector -->
           <div style="margin-bottom:14px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Select Vehicle</div>
-            <select id="edge-vid" onchange="edgeSwitch(this.value)" style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:0.72rem;padding:7px 10px;border-radius:4px;">
+            <select id="edge-vid" onchange="edgeSwitch(this.value)" style="width:100%;background:var(--bg3);border:1px solid rgba(0,229,255,0.25);color:var(--text);font-family:var(--mono);font-size:0.72rem;padding:7px 10px;border-radius:4px;">
               <optgroup label="🇧🇷 Brazil">
               <option value="car1">Car-1 · Renault Sandero</option>
               <option value="car2">Car-2 · Hyundai HB20</option>
@@ -1820,12 +1818,12 @@ function depSwitch(mode) {
 
           <!-- Live inference values -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px;">
+            <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:10px;">
               <div style="font-family:var(--mono);font-size:0.55rem;color:var(--text-3);margin-bottom:3px;">CO₂ NOW</div>
               <div id="edge-co2" style="font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--cyan);line-height:1;">—</div>
               <div id="edge-co2-unit" style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);">g/km</div>
             </div>
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px;">
+            <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:10px;">
               <div style="font-family:var(--mono);font-size:0.55rem;color:var(--text-3);margin-bottom:3px;">SPEED</div>
               <div id="edge-spd" style="font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--text);line-height:1;">—</div>
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);">km/h</div>
@@ -1834,11 +1832,11 @@ function depSwitch(mode) {
 
           <!-- Regime + RPM -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px;">
+            <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:10px;">
               <div style="font-family:var(--mono);font-size:0.55rem;color:var(--text-3);margin-bottom:3px;">REGIME</div>
               <div id="edge-regime" style="font-family:var(--mono);font-size:0.72rem;font-weight:600;color:var(--cyan);">—</div>
             </div>
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px;">
+            <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:10px;">
               <div style="font-family:var(--mono);font-size:0.55rem;color:var(--text-3);margin-bottom:3px;">INFERENCE</div>
               <div style="font-family:var(--mono);font-size:0.72rem;font-weight:600;color:var(--green);">3.1 ms</div>
             </div>
@@ -1913,7 +1911,7 @@ function depSwitch(mode) {
 
           <!-- Last sync log -->
           <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Sync Log</div>
-          <div id="cloud-log" style="font-family:var(--mono);font-size:0.62rem;color:var(--text-2);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;height:80px;overflow-y:auto;display:flex;flex-direction:column;gap:2px;">
+          <div id="cloud-log" style="font-family:var(--mono);font-size:0.62rem;color:var(--text-2);background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:8px;height:80px;overflow-y:auto;display:flex;flex-direction:column;gap:2px;">
             <span style="color:var(--text-3);">Waiting for first sync...</span>
           </div>
         </div>
@@ -1959,7 +1957,7 @@ function depSwitch(mode) {
           </div>
 
           <!-- VMR0004 data quality -->
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:12px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:12px;margin-bottom:12px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Verra VCS VMR0004 v2.0 MRV</div>
             <div style="display:flex;flex-direction:column;gap:5px;">
               <div style="display:flex;justify-content:space-between;">
@@ -2235,17 +2233,24 @@ if (archEl) archObs.observe(archEl);
     <h2 class="section-title reveal">Live Vehicle Position Map</h2>
     <p class="section-sub reveal">Real recorded GPS trajectories from the paper's dataset. Select a vehicle to track its position and visualise CO₂ intensity along the route — green (low) → amber → red (high).</p>
 
-    <div class="reveal" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+    <div class="reveal" style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;">
 
       <!-- Map header -->
       <div style="background:var(--panel);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px;">
-        <div style="font-family:var(--mono);font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;">&#x2B21; CarbonPilot &middot; GPS Track</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;" id="map-tabs">
-          <button onclick="mapSwitch('car1')"   id="mtab-car1"   style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border:1px solid var(--cyan);border-radius:3px;background:var(--cyan-dim);color:var(--cyan);cursor:pointer;">Car-1 · Belo Horizonte</button>
-          <button onclick="mapSwitch('car2')"   id="mtab-car2"   style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border:1px solid var(--border);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;">Car-2 · Belo Horizonte</button>
-          <button onclick="mapSwitch('truck1')" id="mtab-truck1" style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border:1px solid var(--border);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;">Truck-1 · São Paulo</button>
-          <button onclick="mapSwitch('truck2')" id="mtab-truck2" style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border:1px solid var(--border);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;">Truck-2 · São Paulo</button>
-          <button onclick="mapSwitch('truck3')" id="mtab-truck3" style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border:1px solid var(--border);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;">Truck-3 · São Paulo</button>
+        <div style="font-family:var(--mono);font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;">&#x2B21; CarbonPilot · GPS Track · 🇧🇷 Brazil + 🇮🇳 India</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;" id="map-tabs" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+          <!-- 🇧🇷 Brazil · OBD-II -->
+          <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);margin-right:2px;">🇧🇷</span>
+          <button onclick="mapSwitch('car1')" id="mtab-car1" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid var(--cyan);background:var(--cyan-dim);color:var(--cyan);">Car-1 · BH</button>
+          <button onclick="mapSwitch('car2')" id="mtab-car2" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(0,229,255,0.2);background:transparent;color:var(--text-3);">Car-2 · BH</button>
+          <button onclick="mapSwitch('truck1')" id="mtab-truck1" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(0,229,255,0.2);background:transparent;color:var(--text-3);">Truck-1 · SP</button>
+          <button onclick="mapSwitch('truck2')" id="mtab-truck2" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(0,229,255,0.2);background:transparent;color:var(--text-3);">Truck-2 · SP</button>
+          <button onclick="mapSwitch('truck3')" id="mtab-truck3" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(0,229,255,0.2);background:transparent;color:var(--text-3);">Truck-3 · SP</button>
+          <!-- 🇮🇳 India · MG T-BOX -->
+          <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);margin-left:6px;margin-right:2px;">🇮🇳</span>
+          <button onclick="mapSwitch('mg_mumbai')" id="mtab-mg_mumbai" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(255,152,0,0.2);background:transparent;color:var(--text-3);">MG Astor · Mumbai</button>
+          <button onclick="mapSwitch('mg_delhi')" id="mtab-mg_delhi" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(255,152,0,0.2);background:transparent;color:var(--text-3);">MG Hector · Delhi</button>
+          <button onclick="mapSwitch('mg_pune')" id="mtab-mg_pune" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(255,152,0,0.2);background:transparent;color:var(--text-3);">MG ZS · Pune</button>
         </div>
       </div>
 
@@ -2258,19 +2263,19 @@ if (archEl) archObs.observe(archEl);
         <!-- Side stats -->
         <div style="padding:20px;display:flex;flex-direction:column;gap:14px;border-left:1px solid var(--border);">
 
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Current Position</div>
             <div id="map-lat" style="font-family:var(--mono);font-size:0.78rem;color:var(--cyan);">—</div>
             <div id="map-lon" style="font-family:var(--mono);font-size:0.78rem;color:var(--cyan);">—</div>
           </div>
 
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Current CO&#8322;</div>
             <div id="map-co2" style="font-family:var(--display);font-size:1.8rem;font-weight:700;color:var(--cyan);">—</div>
             <div id="map-unit" style="font-family:var(--mono);font-size:0.68rem;color:var(--text-3);">g/km</div>
           </div>
 
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">CO&#8322; Trail Legend</div>
             <div style="display:flex;flex-direction:column;gap:5px;">
               <div style="display:flex;align-items:center;gap:8px;"><div style="width:24px;height:3px;background:#1A73E8;border-radius:2px;"></div><span style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);">Low (&lt;300 g/km)</span></div>
@@ -2281,13 +2286,13 @@ if (archEl) archObs.observe(archEl);
             </div>
           </div>
 
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Regime</div>
             <div id="map-regime" style="font-family:var(--display);font-size:1rem;font-weight:700;color:var(--cyan);">—</div>
           </div>
 
           <!-- Geo-adaptive: elevation + gradient -->
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Elevation &amp; Gradient</div>
             <div style="display:flex;justify-content:space-between;align-items:baseline;">
               <span id="map-elev" style="font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--text);">—</span>
@@ -2298,7 +2303,7 @@ if (archEl) archObs.observe(archEl);
           </div>
 
           <!-- Geo-adaptive: road context -->
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Road Context</div>
             <div id="map-road" style="font-family:var(--display);font-size:0.85rem;font-weight:700;color:var(--cyan);margin-bottom:3px;word-break:break-word;">Fetching...</div>
             <div id="map-city" style="font-family:var(--mono);font-size:0.65rem;color:var(--text-3);margin-bottom:6px;">—</div>
@@ -2309,7 +2314,7 @@ if (archEl) archObs.observe(archEl);
           </div>
 
           <!-- Geo-adaptive: speed vs limit -->
-          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;">
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Speed vs Limit</div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
               <span id="map-spd-val" style="font-family:var(--display);font-size:1.3rem;font-weight:700;color:var(--text);">—</span>
@@ -2359,7 +2364,7 @@ if (archEl) archObs.observe(archEl);
     <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:40px;">
 
       <!-- EU OBFCM -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
         <div style="padding:14px 16px;background:rgba(0,229,255,0.06);border-bottom:1px solid rgba(0,229,255,0.15);">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;">EU OBFCM · EEA</div>
@@ -2401,7 +2406,7 @@ if (archEl) archObs.observe(archEl);
       </div>
 
       <!-- JRC OBD Study -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
         <div style="padding:14px 16px;background:rgba(118,255,3,0.06);border-bottom:1px solid rgba(118,255,3,0.15);">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;">JRC OBFCM M1 · EC</div>
@@ -2443,7 +2448,7 @@ if (archEl) archObs.observe(archEl);
       </div>
 
       <!-- Canada NRCan -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
         <div style="padding:14px 16px;background:rgba(255,109,0,0.06);border-bottom:1px solid rgba(255,109,0,0.15);">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.1em;">NRCan · Canada</div>
@@ -2485,7 +2490,7 @@ if (archEl) archObs.observe(archEl);
       </div>
 
       <!-- ICCT EU HDV -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
         <div style="padding:14px 16px;background:rgba(199,125,255,0.06);border-bottom:1px solid rgba(199,125,255,0.15);">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--violet);text-transform:uppercase;letter-spacing:0.1em;">ICCT · EU HDV</div>
@@ -2527,7 +2532,7 @@ if (archEl) archObs.observe(archEl);
       </div>
 
       <!-- EEA fleet averages -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
         <div style="padding:14px 16px;background:rgba(255,59,59,0.06);border-bottom:1px solid rgba(255,59,59,0.15);">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--red);text-transform:uppercase;letter-spacing:0.1em;">EEA · EU Cars</div>
@@ -2569,7 +2574,7 @@ if (archEl) archObs.observe(archEl);
       </div>
 
       <!-- Number audit badge -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
         <div style="padding:14px 16px;background:rgba(118,255,3,0.06);border-bottom:1px solid rgba(118,255,3,0.15);">
           <div style="font-family:var(--mono);font-size:0.6rem;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;">Platform Audit · July 2026</div>
           <div style="font-family:var(--display);font-size:0.95rem;font-weight:700;margin-top:6px;">Every Number Verified</div>
@@ -2615,7 +2620,7 @@ if (archEl) archObs.observe(archEl);
     </div>
 
     <!-- Benchmark comparison table -->
-    <div class="reveal" style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+    <div class="reveal" style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
       <div style="padding:14px 18px;background:var(--panel);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;">CarbonPilot Predictions vs. Published Benchmarks</div>
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;min-width:700px;">
@@ -2688,7 +2693,7 @@ if (archEl) archObs.observe(archEl);
     <div class="section-label">New · India Road Data · MG Motor India</div>
     <h2 class="section-title reveal">MG India T-BOX Telemetry · 3 VINs · 7 Days · 140,903 Records</h2>
     <!-- MG India dataset KPI strip -->
-    <div class="reveal" style="display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:32px;">
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border:1px solid rgba(0,229,255,0.25);border-radius:8px;overflow:hidden;margin-bottom:32px;">
       <div style="background:var(--bg);padding:14px 12px;text-align:center;">
         <div style="font-family:var(--mono);font-size:0.55rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Dataset</div>
         <div style="font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--amber);">7</div>
@@ -2831,7 +2836,7 @@ if (archEl) archObs.observe(archEl);
     </div>
 
     <!-- India vs Brazil comparison -->
-    <div class="reveal" style="background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+    <div class="reveal" style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:10px;overflow:hidden;">
       <div style="padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;">India (MG T-BOX) vs Brazil (OBD-II) — Signal & CO₂ Comparison</div>
       <table style="width:100%;border-collapse:collapse;">
         <tr style="background:rgba(0,0,0,0.2);">
@@ -2984,11 +2989,36 @@ function mgSwitch(vid) {
 <script>
 // ── MAP ENGINE — Geo-adaptive parameters (Open-Meteo + Nominatim) ───────────────
 
-// ── Brazil speed limits (CTB / DENATRAN) ─────────────────────────────────
+// ── Brazil speed limits (CTB / DENATRAN · Código de Trânsito Brasileiro) ────
 const BRAZIL_LIMITS = {
   motorway:110, trunk:90, primary:80, secondary:60, tertiary:50,
   residential:30, living_street:20, service:20, unclassified:40
 };
+
+// ── India speed limits (Motor Vehicles Act 1988, MoRTH notification 2020) ────
+// Source: Central Motor Vehicles Rules + MoRTH speed limit circular
+const INDIA_LIMITS = {
+  motorway:120,     // Expressways (NH with access control)
+  trunk:100,        // National Highways (NH)
+  primary:80,       // State Highways (SH)
+  secondary:60,     // District / MDR roads
+  tertiary:50,      // Urban arterials
+  residential:30,   // Urban residential / colony roads
+  living_street:20,
+  service:20,
+  unclassified:50   // Default urban India
+};
+
+// ── Detect country from GPS coordinates ──────────────────────────────────
+function detectCountry(lat, lon) {
+  if (lat > 8  && lat < 37  && lon > 68 && lon < 97)  return 'IN'; // India
+  if (lat > -35 && lat < 5  && lon > -74 && lon < -35) return 'BR'; // Brazil
+  return 'UN'; // unknown → use Brazil as fallback
+}
+
+function getSpeedLimits(lat, lon) {
+  return detectCountry(lat, lon) === 'IN' ? INDIA_LIMITS : BRAZIL_LIMITS;
+}
 
 // ── Geo enrichment cache — keyed by 0.01° grid (~1 km cell) ──────────────
 const GEO_CACHE = {};     // key → {elev, road, city, roadType, ts}
@@ -3109,7 +3139,7 @@ function pushElevHistory(elev, lat, lon) {
 }
 
 // ── Update geo-adaptive UI panels ─────────────────────────────────────────
-function updateGeoUI(elev, ctx, gradFactor, speed, isTruck) {
+function updateGeoUI(elev, ctx, gradFactor, speed, isTruck, lat, lon) {
   // Elevation
   if (elev != null) {
     const elevEl = document.getElementById('map-elev');
@@ -3144,7 +3174,8 @@ function updateGeoUI(elev, ctx, gradFactor, speed, isTruck) {
       badgeEl.style.background = isHighway ? 'var(--amber-dim)' : 'var(--cyan-dim)';
       badgeEl.style.color      = isHighway ? 'var(--amber)' : 'var(--cyan)';
     }
-    mapSpeedLimit = BRAZIL_LIMITS[rt] || BRAZIL_LIMITS.unclassified;
+    const LIMITS = getSpeedLimits(lat || 0, lon || 0);
+    mapSpeedLimit = LIMITS[rt] || LIMITS.unclassified;
     if (limitEl) limitEl.textContent = mapSpeedLimit + ' km/h limit';
   }
 
@@ -3177,17 +3208,17 @@ let mapPolylines = [];
 let mapTimer     = null;
 const MAP_TRAIL_MAX = 60;
 const MAP_VEHICLE_COLORS = {
-  car1:'#1A73E8', car2:'#188038',
-  truck1:'#E37400', truck2:'#E20015', truck3:'#7B1EA2',
-  mg_mumbai:'#FB8C00', mg_delhi:'#9C27B0', mg_pune:'#D93025'
+  car1:'#00E5FF', car2:'#76FF03',
+  truck1:'#FF6D00', truck2:'#FF3B3B', truck3:'#C77DFF',
+  mg_mumbai:'#FFA726', mg_delhi:'#BA68C8', mg_pune:'#EF5350'
 };
 
 function co2Color(co2, idle) {
-  if (idle) return '#9AA0A6';
-  if (co2 < 300)  return '#1A73E8';
-  if (co2 < 800)  return '#188038';
-  if (co2 < 1500) return '#E37400';
-  return '#E20015';
+  if (idle) return '#888888';
+  if (co2 < 300)  return '#00E5FF';
+  if (co2 < 800)  return '#76FF03';
+  if (co2 < 1500) return '#FF6D00';
+  return '#FF3B3B';
 }
 
 function initMap() {
@@ -3202,6 +3233,7 @@ function initMap() {
 function mapSwitch(vid) {
   mapVehicle = vid;
   mapTrail = []; prevElev = null; prevLat = null; prevLon = null; elevHistory = [];
+  mapSpeedLimit = 50; // will be updated by geo-adaptive on first data point
   mapPolylines.forEach(p => cpMap.removeLayer(p)); mapPolylines = [];
   if (mapMarker) { cpMap.removeLayer(mapMarker); mapMarker = null; }
   Object.keys(MAP_VEHICLE_COLORS).forEach(v => {
@@ -3249,7 +3281,7 @@ async function mapUpdate(d) {
   }
 
   // Update geo UI
-  updateGeoUI(elev, ctx, gradFactor, d.speed, isTruck);
+  updateGeoUI(elev, ctx, gradFactor, d.speed, isTruck, lat, lon);
 
   // Update core CO₂ display with gradient-adjusted value
   const color = co2Color(adjCO2, d.is_idle);
@@ -3263,7 +3295,9 @@ async function mapUpdate(d) {
   document.getElementById('map-lon').textContent  = 'Lon: '+lon.toFixed(5)+'°';
   document.getElementById('map-regime').textContent = d.regime;
   document.getElementById('map-regime').style.color = d.is_idle ? 'var(--amber)' : 'var(--cyan)';
-  document.getElementById('map-record').textContent = 'Record '+(d.idx+1)+' / '+d.total
+  const country = detectCountry(lat,lon);
+  const countryFlag = country==='IN' ? '🇮🇳 India' : country==='BR' ? '🇧🇷 Brazil' : '';
+  document.getElementById('map-record').textContent = countryFlag+' · Record '+(d.idx+1)+' / '+d.total
     + (ctx ? '  ·  '+ctx.road.slice(0,28) : '');
 
   // Map marker
@@ -3341,7 +3375,7 @@ if (mapEl) mapObs.observe(mapEl);
     <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px;">
 
       <!-- Stream 1: SaaS -->
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+      <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;">
         <div style="padding:18px 22px;background:rgba(0,229,255,0.06);border-bottom:1px solid rgba(0,229,255,0.15);">
           <div style="font-family:var(--mono);font-size:0.6rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Revenue Stream 01 · Core</div>
           <div style="font-family:var(--display);font-size:1.15rem;font-weight:700;">Fleet Intelligence SaaS</div>
@@ -3349,7 +3383,7 @@ if (mapEl) mapObs.observe(mapEl);
         </div>
         <div style="padding:18px 22px;">
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:18px;">
-            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center;">
+            <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;text-align:center;">
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);margin-bottom:6px;text-transform:uppercase;">Starter</div>
               <div style="font-family:var(--display);font-size:1.4rem;font-weight:800;color:var(--text);">$25</div>
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);">/veh/mo</div>
@@ -3362,14 +3396,14 @@ if (mapEl) mapObs.observe(mapEl);
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);">/veh/mo</div>
               <div style="margin-top:10px;font-size:0.75rem;color:var(--text-2);line-height:1.6;">+ Edge inference<br>50–500 vehicles<br>CSRD reports<br>VMR0004 MRV</div>
             </div>
-            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center;">
+            <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;text-align:center;">
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--amber);margin-bottom:6px;text-transform:uppercase;">Enterprise</div>
               <div style="font-family:var(--display);font-size:1.4rem;font-weight:800;color:var(--amber);">$75+</div>
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);">/veh/mo</div>
               <div style="margin-top:10px;font-size:0.75rem;color:var(--text-3);line-height:1.6;">500+ vehicles<br>OEM integration<br>White-label API<br>SLA 99.9%</div>
             </div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;font-family:var(--mono);font-size:0.65rem;color:var(--text-2);">
+          <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:12px;font-family:var(--mono);font-size:0.65rem;color:var(--text-2);">
             <div style="color:var(--text-3);margin-bottom:4px;">Industry benchmark (2026):</div>
             Samsara core: $27–33 · Geotab mid-tier: $25–45 · Enterprise platforms: $45–100+<br>
             <span style="color:var(--cyan);">CarbonPilot Professional = industry mid-tier pricing with cross-protocol + idle-accounting premium</span>
@@ -3378,7 +3412,7 @@ if (mapEl) mapObs.observe(mapEl);
       </div>
 
       <!-- Stream 2: MRV -->
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+      <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;">
         <div style="padding:18px 22px;background:rgba(199,125,255,0.06);border-bottom:1px solid rgba(199,125,255,0.15);">
           <div style="font-family:var(--mono);font-size:0.6rem;color:var(--violet);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Revenue Stream 02 · Compliance</div>
           <div style="font-family:var(--display);font-size:1.15rem;font-weight:700;">MRV-as-a-Service</div>
@@ -3386,21 +3420,21 @@ if (mapEl) mapObs.observe(mapEl);
         </div>
         <div style="padding:18px 22px;">
           <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:6px;">
               <div>
                 <div style="font-family:var(--display);font-size:0.85rem;font-weight:700;">CSRD Scope 1 Package</div>
                 <div style="font-family:var(--mono);font-size:0.65rem;color:var(--text-3);">ISO 14064-1 · ESRS E1 · up to 500 vehicles</div>
               </div>
               <div style="font-family:var(--display);font-size:1.2rem;font-weight:800;color:var(--violet);">$8k/yr</div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:6px;">
               <div>
                 <div style="font-family:var(--display);font-size:0.85rem;font-weight:700;">VMR0004 Carbon Credit MRV</div>
                 <div style="font-family:var(--mono);font-size:0.65rem;color:var(--text-3);">Verra-ready · aggregated fleet · VVB data package</div>
               </div>
               <div style="font-family:var(--display);font-size:1.2rem;font-weight:800;color:var(--violet);">$25k/yr</div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:6px;">
               <div>
                 <div style="font-family:var(--display);font-size:0.85rem;font-weight:700;">Enterprise Verified Data Export</div>
                 <div style="font-family:var(--mono);font-size:0.65rem;color:var(--text-3);">API + signed reports · custom integration</div>
@@ -3408,7 +3442,7 @@ if (mapEl) mapObs.observe(mapEl);
               <div style="font-family:var(--display);font-size:1.2rem;font-weight:800;color:var(--violet);">$50k+/yr</div>
             </div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;font-family:var(--mono);font-size:0.65rem;color:var(--text-2);">
+          <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:12px;font-family:var(--mono);font-size:0.65rem;color:var(--text-2);">
             <div style="color:var(--text-3);margin-bottom:4px;">Market driver:</div>
             EU CSRD 2022/2464 mandates Scope 1 fleet disclosure from Jan 2024. Verified telematics data commands premium over estimated fuel-based figures. CarbonPilot's &lt;5% uncertainty (telematics path) vs. 15–20% for manual estimates.
           </div>
@@ -3416,7 +3450,7 @@ if (mapEl) mapObs.observe(mapEl);
       </div>
 
       <!-- Stream 3: Carbon Credits -->
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+      <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;">
         <div style="padding:18px 22px;background:rgba(118,255,3,0.06);border-bottom:1px solid rgba(118,255,3,0.15);">
           <div style="font-family:var(--mono);font-size:0.6rem;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Revenue Stream 03 · Carbon Market</div>
           <div style="font-family:var(--display);font-size:1.15rem;font-weight:700;">Carbon Credit Infrastructure</div>
@@ -3424,12 +3458,12 @@ if (mapEl) mapObs.observe(mapEl);
         </div>
         <div style="padding:18px 22px;">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-            <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;">
+            <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:12px;">
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);margin-bottom:4px;">VCM Energy Efficiency Price</div>
               <div style="font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--green);">$6.34</div>
               <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">/tonne avg · 2024<br>Ecosystem Marketplace</div>
             </div>
-            <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;">
+            <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:12px;">
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);margin-bottom:4px;">Min. Viable Fleet Size</div>
               <div style="font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--amber);">5,000</div>
               <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">pooled vehicles<br>for VVB audit recovery</div>
@@ -3449,7 +3483,7 @@ if (mapEl) mapObs.observe(mapEl);
       </div>
 
       <!-- Stream 4: Data & API -->
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+      <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;">
         <div style="padding:18px 22px;background:rgba(255,109,0,0.06);border-bottom:1px solid rgba(255,109,0,0.15);">
           <div style="font-family:var(--mono);font-size:0.6rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Revenue Stream 04 · Data Economy</div>
           <div style="font-family:var(--display);font-size:1.15rem;font-weight:700;">Data Licensing &amp; API</div>
@@ -3457,24 +3491,24 @@ if (mapEl) mapObs.observe(mapEl);
         </div>
         <div style="padding:18px 22px;">
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
-            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:5px;border:1px solid var(--border);">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:5px;border:1px solid rgba(0,229,255,0.25);">
               <span style="font-size:0.82rem;color:var(--text-2);">Insurance UBI (CO&#8322;/km actuarial)</span>
               <span style="font-family:var(--mono);font-size:0.72rem;color:var(--amber);">$0.50–2.00/veh/mo</span>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:5px;border:1px solid var(--border);">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:5px;border:1px solid rgba(0,229,255,0.25);">
               <span style="font-size:0.82rem;color:var(--text-2);">OEM white-label API</span>
               <span style="font-family:var(--mono);font-size:0.72rem;color:var(--amber);">Custom enterprise</span>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:5px;border:1px solid var(--border);">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:5px;border:1px solid rgba(0,229,255,0.25);">
               <span style="font-size:0.82rem;color:var(--text-2);">Fleet benchmarking data (anonymised)</span>
               <span style="font-family:var(--mono);font-size:0.72rem;color:var(--amber);">$5k–20k/yr per buyer</span>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:5px;border:1px solid var(--border);">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg);border-radius:5px;border:1px solid rgba(0,229,255,0.25);">
               <span style="font-size:0.82rem;color:var(--text-2);">City / regulator emission reporting</span>
               <span style="font-family:var(--mono);font-size:0.72rem;color:var(--amber);">Government contract</span>
             </div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;font-family:var(--mono);font-size:0.65rem;color:var(--text-2);">
+          <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:6px;padding:12px;font-family:var(--mono);font-size:0.65rem;color:var(--text-2);">
             <span style="color:var(--text-3);">Market driver:</span> Telematics insurance segment growing from $3.09B (2024) to $8.45B (2035). Usage-based insurance requires per-km CO&#8322; data. CarbonPilot's dual-regime output (g/km + g/min) is more granular than any competitor.
           </div>
         </div>
@@ -3482,7 +3516,7 @@ if (mapEl) mapObs.observe(mapEl);
     </div>
 
     <!-- Unit economics table -->
-    <div class="reveal" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:40px;">
+    <div class="reveal" style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;margin-bottom:40px;">
       <div style="padding:16px 22px;background:var(--panel);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;">Unit Economics — Fleet Scenarios</div>
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;min-width:700px;">
@@ -3531,7 +3565,7 @@ if (mapEl) mapObs.observe(mapEl);
     </div>
 
     <!-- ROI for fleet operator -->
-    <div class="reveal" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px 32px;">
+    <div class="reveal" style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:12px;padding:28px 32px;">
       <div style="font-family:var(--mono);font-size:0.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Fleet Operator ROI · 25-Truck Example (Professional tier, $45/veh/mo)</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;">
         <div style="background:var(--bg);padding:18px 16px;text-align:center;">
@@ -3588,7 +3622,7 @@ if (mapEl) mapObs.observe(mapEl);
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;" class="reveal">
 
       <!-- Inputs panel -->
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+      <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;">
         <div style="background:var(--panel);padding:16px 24px;border-bottom:1px solid var(--border);">
           <div style="font-family:var(--mono);font-size:0.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;">Fleet Parameters</div>
         </div>
@@ -3617,7 +3651,7 @@ if (mapEl) mapObs.observe(mapEl);
                 Heavy Truck (J1939)
               </button>
               <button onclick="ccSetType('car')" id="cc-btn-car"
-                style="flex:1;padding:8px;font-family:var(--mono);font-size:0.68rem;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-3);cursor:pointer;">
+                style="flex:1;padding:8px;font-family:var(--mono);font-size:0.68rem;border:1px solid rgba(0,229,255,0.25);border-radius:4px;background:transparent;color:var(--text-3);cursor:pointer;">
                 Passenger Car (OBD-II)
               </button>
             </div>
@@ -3672,27 +3706,27 @@ if (mapEl) mapObs.observe(mapEl);
       <div style="display:flex;flex-direction:column;gap:16px;">
 
         <!-- Headline metrics -->
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+        <div style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:12px;overflow:hidden;">
           <div style="background:var(--panel);padding:16px 24px;border-bottom:1px solid var(--border);">
             <div style="font-family:var(--mono);font-size:0.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;">Annual Projection</div>
           </div>
           <div style="padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+            <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px 16px;">
               <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">CO₂ Reduced</div>
               <div id="cc-out-co2" style="font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--green);">—</div>
               <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);">tonnes CO₂e/year</div>
             </div>
-            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+            <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px 16px;">
               <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Credit Revenue</div>
               <div id="cc-out-rev" style="font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--cyan);">—</div>
               <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);">USD gross/year</div>
             </div>
-            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+            <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px 16px;">
               <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Audit Breakeven</div>
               <div id="cc-out-be" style="font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--amber);">—</div>
               <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);">years (at $25k audit)</div>
             </div>
-            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+            <div style="background:var(--bg2);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px 16px;">
               <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Per Vehicle</div>
               <div id="cc-out-pv" style="font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--violet);">—</div>
               <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);">USD/vehicle/year</div>
@@ -3701,7 +3735,7 @@ if (mapEl) mapObs.observe(mapEl);
         </div>
 
         <!-- Pathway recommendation -->
-        <div id="cc-pathway" style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <div id="cc-pathway" style="background:var(--bg);border:1px solid rgba(0,229,255,0.25);border-radius:12px;padding:20px;">
           <div style="font-family:var(--mono);font-size:0.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">Recommended Pathway</div>
           <div id="cc-rec" style="font-family:var(--body);font-size:0.85rem;color:var(--text-2);line-height:1.65;">Run the calculator to see pathway recommendation.</div>
         </div>
@@ -3816,11 +3850,11 @@ document.addEventListener('DOMContentLoaded', ccCalc);
 </script>
 
 <!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
-<footer style="background:#1C1C1C;color:#FFFFFF;">
+<footer>
   <div class="container">
 
     <!-- Contact card row -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:28px 0;border-bottom:1px solid rgba(255,255,255,0.12);flex-wrap:wrap;gap:20px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:28px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:20px;">
 
       <!-- Identity -->
       <div style="display:flex;align-items:center;gap:20px;">
@@ -3839,7 +3873,7 @@ document.addEventListener('DOMContentLoaded', ccCalc);
       <!-- Contact channels -->
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
         <!-- Mobile -->
-        <a href="tel:+918527457072" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--border);border-radius:6px;text-decoration:none;background:var(--bg2);transition:all 0.2s;"
+        <a href="tel:+918527457072" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(0,229,255,0.25);border-radius:6px;text-decoration:none;background:var(--bg2);transition:all 0.2s;"
            onmouseover="this.style.borderColor='var(--cyan)';this.style.background='var(--cyan-dim)'"
            onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--bg2)'">
           <span style="font-size:1rem;">📱</span>
@@ -3849,7 +3883,7 @@ document.addEventListener('DOMContentLoaded', ccCalc);
           </div>
         </a>
         <!-- Email -->
-        <a href="mailto:RahulKumar.Dubey@in.bosch.com" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--border);border-radius:6px;text-decoration:none;background:var(--bg2);transition:all 0.2s;"
+        <a href="mailto:RahulKumar.Dubey@in.bosch.com" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(0,229,255,0.25);border-radius:6px;text-decoration:none;background:var(--bg2);transition:all 0.2s;"
            onmouseover="this.style.borderColor='var(--cyan)';this.style.background='var(--cyan-dim)'"
            onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--bg2)'">
           <span style="font-size:1rem;">✉</span>
@@ -3859,7 +3893,7 @@ document.addEventListener('DOMContentLoaded', ccCalc);
           </div>
         </a>
         <!-- IEEE Badge -->
-        <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--border);border-radius:6px;background:var(--bg2);">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(0,229,255,0.25);border-radius:6px;background:var(--bg2);">
           <span style="font-size:1rem;">🏅</span>
           <div>
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;">Membership</div>
@@ -4008,9 +4042,9 @@ const MAX_POINTS = 120;
 let tripMotion = 0, tripIdle = 0, totalSec = 0, idleSec = 0;
 
 const VEHICLE_COLORS = {
-  car1:'#1A73E8', car2:'#188038',
-  truck1:'#E37400', truck2:'#E20015', truck3:'#7B1EA2',
-  mg_mumbai:'#FB8C00', mg_delhi:'#9C27B0', mg_pune:'#D93025'
+  car1:'#00E5FF', car2:'#76FF03',
+  truck1:'#FF6D00', truck2:'#FF3B3B', truck3:'#C77DFF',
+  mg_mumbai:'#FFA726', mg_delhi:'#BA68C8', mg_pune:'#EF5350'
 };
 
 // chart handled by d2InitChart()
