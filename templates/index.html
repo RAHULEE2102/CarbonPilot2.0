@@ -1069,12 +1069,17 @@ footer {
       <!-- Header: tabs -->
       <div style="background:var(--panel);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px;">
         <div style="font-family:var(--mono);font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;">&#x2B21; CarbonPilot &middot; Live Telemetry Monitor</div>
-        <div id="vTabs" style="display:flex;gap:4px;flex-wrap:wrap;">
-          <button onclick="switchVehicle2('car1')"   id="tab-car1"   style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid var(--cyan);border-radius:3px;background:var(--cyan-dim);color:var(--cyan);cursor:pointer;letter-spacing:0.05em;">Car-1 Renault</button>
-          <button onclick="switchVehicle2('car2')"   id="tab-car2"   style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid rgba(0,229,255,0.25);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Car-2 Hyundai</button>
-          <button onclick="switchVehicle2('truck1')" id="tab-truck1" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid rgba(0,229,255,0.25);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-1 EVO</button>
-          <button onclick="switchVehicle2('truck2')" id="tab-truck2" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid rgba(0,229,255,0.25);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-2 FKQ</button>
-          <button onclick="switchVehicle2('truck3')" id="tab-truck3" style="font-family:var(--mono);font-size:0.68rem;padding:6px 14px;border:1px solid rgba(0,229,255,0.25);border-radius:3px;background:transparent;color:var(--text-3);cursor:pointer;letter-spacing:0.05em;">Truck-3 FIL</button>
+        <div id="vTabs" style="display:flex;gap:5px;flex-wrap:wrap;align-items:center;">
+          <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);padding-right:2px;">🇧🇷</span>
+          <button onclick="switchVehicle2('car1')"     id="tab-car1"     style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid var(--cyan);background:var(--cyan-dim);color:var(--cyan);">Car-1 Renault</button>
+          <button onclick="switchVehicle2('car2')"     id="tab-car2"     style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(0,229,255,0.2);background:transparent;color:var(--text-3);">Car-2 Hyundai</button>
+          <button onclick="switchVehicle2('truck1')"   id="tab-truck1"   style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(0,229,255,0.2);background:transparent;color:var(--text-3);">Truck-1 EVO</button>
+          <button onclick="switchVehicle2('truck2')"   id="tab-truck2"   style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(0,229,255,0.2);background:transparent;color:var(--text-3);">Truck-2 FKQ</button>
+          <button onclick="switchVehicle2('truck3')"   id="tab-truck3"   style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(0,229,255,0.2);background:transparent;color:var(--text-3);">Truck-3 FIL</button>
+          <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);padding:0 2px;margin-left:6px;">🇮🇳</span>
+          <button onclick="switchVehicle2('mg_mumbai')" id="tab-mg_mumbai" style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(255,167,38,0.2);background:transparent;color:var(--text-3);">MG Astor · Mumbai</button>
+          <button onclick="switchVehicle2('mg_delhi')"  id="tab-mg_delhi"  style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(255,167,38,0.2);background:transparent;color:var(--text-3);">MG Hector · Delhi</button>
+          <button onclick="switchVehicle2('mg_pune')"   id="tab-mg_pune"   style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(255,167,38,0.2);background:transparent;color:var(--text-3);">MG ZS · Pune</button>
         </div>
       </div>
 
@@ -1176,11 +1181,16 @@ footer {
 // ═══ DEMO ENGINE — streams REAL vehicle telematics data from the API ════════
 
 const D2_VEHICLES = {
-  car1:   { name:'Car-1 · Renault Sandero', proto:'OBD-II',   color:'#00E5FF', unit:'g/km'  },
-  car2:   { name:'Car-2 · Hyundai HB20',   proto:'OBD-II',   color:'#188038', unit:'g/km'  },
-  truck1: { name:'Truck-1 · EVO 8726',     proto:'SAE J1939', color:'#E37400', unit:'g/km'  },
-  truck2: { name:'Truck-2 · FKQ 5624',     proto:'SAE J1939', color:'#E20015', unit:'g/km'  },
-  truck3: { name:'Truck-3 · FIL 2471',     proto:'SAE J1939', color:'#7B1EA2', unit:'g/km'  },
+  // 🇧🇷 Brazil · OBD-II (SAE J1979 / ISO 15031)
+  car1:      { name:'Car-1 · Renault Sandero', proto:'OBD-II',    color:'#00E5FF', unit:'g/km' },
+  car2:      { name:'Car-2 · Hyundai HB20',   proto:'OBD-II',    color:'#76FF03', unit:'g/km' },
+  truck1:    { name:'Truck-1 · EVO 8726',     proto:'SAE J1939', color:'#FF6D00', unit:'g/km' },
+  truck2:    { name:'Truck-2 · FKQ 5624',     proto:'SAE J1939', color:'#FF3B3B', unit:'g/km' },
+  truck3:    { name:'Truck-3 · FIL 2471',     proto:'SAE J1939', color:'#C77DFF', unit:'g/km' },
+  // 🇮🇳 India · MG iSmart T-BOX CAN · BS-VI petrol · IPCC 2.31 kg CO₂/L
+  mg_mumbai: { name:'MG Astor · Mumbai',      proto:'MG-CAN',    color:'#FFA726', unit:'g/km' },
+  mg_delhi:  { name:'MG Hector · Delhi NCR',  proto:'MG-CAN',    color:'#CE93D8', unit:'g/km' },
+  mg_pune:   { name:'MG ZS · Pune',           proto:'MG-CAN',    color:'#EF9A9A', unit:'g/km' },
 };
 
 let d2Vehicle = 'car1';
@@ -1248,11 +1258,16 @@ async function d2Tick() {
 
 // Fallback simulation using real paper statistics
 const D2_FALLBACK = {
-  car1:  {co2Mean:172,co2Std:110,sMax:120,rpmLo:800,rpmHi:3000,truck:false,kf:2392,wA:0.000704,wB:81.8},
-  car2:  {co2Mean:448,co2Std:290,sMax:68, rpmLo:800,rpmHi:2800,truck:false,kf:2392,wA:0.000820,wB:95.2},
-  truck1:{co2Mean:1265,co2Std:600,sMax:90,rpmLo:600,rpmHi:2200,truck:true, kf:2640,wA:0.0113, wB:193.6},
-  truck2:{co2Mean:1337,co2Std:640,sMax:90,rpmLo:600,rpmHi:2100,truck:true, kf:2640,wA:0.0108, wB:287.4},
-  truck3:{co2Mean:1221,co2Std:580,sMax:88,rpmLo:600,rpmHi:2000,truck:true, kf:2640,wA:0.0098, wB:381.9},
+  // ── Brazil OBD-II ─────────────────────────────────────────────────────
+  car1:     {co2Mean:166, co2Std:90,sMax:120,rpmLo:800, rpmHi:3000,truck:false,kf:2392,wA:0.000704,wB:81.8,  proto:'OBD-II'},
+  car2:     {co2Mean:372, co2Std:190,sMax:68, rpmLo:800, rpmHi:2800,truck:false,kf:2392,wA:0.000820,wB:95.2,  proto:'OBD-II'},
+  truck1:   {co2Mean:1265,co2Std:600,sMax:90, rpmLo:600, rpmHi:2200,truck:true, kf:2640,wA:0.0113, wB:193.6, proto:'J1939'},
+  truck2:   {co2Mean:1337,co2Std:640,sMax:90, rpmLo:600, rpmHi:2100,truck:true, kf:2640,wA:0.0108, wB:287.4, proto:'J1939'},
+  truck3:   {co2Mean:1221,co2Std:580,sMax:88, rpmLo:600, rpmHi:2000,truck:true, kf:2640,wA:0.0098, wB:381.9, proto:'J1939'},
+  // ── India MG T-BOX CAN · IPCC 2006 Vol.2 · 2.31 kg CO₂/L petrol ────
+  mg_mumbai:{co2Mean:290, co2Std:60, sMax:73, rpmLo:700, rpmHi:2900,truck:false,kf:2310,wA:0.000850,wB:88.5,  proto:'MG-CAN'},
+  mg_delhi: {co2Mean:275, co2Std:70, sMax:73, rpmLo:700, rpmHi:2200,truck:false,kf:2310,wA:0.000900,wB:92.0,  proto:'MG-CAN'},
+  mg_pune:  {co2Mean:264, co2Std:55, sMax:97, rpmLo:700, rpmHi:2100,truck:false,kf:2310,wA:0.000820,wB:86.0,  proto:'MG-CAN'},
 };
 function d2SimFallback(vid) {
   const p = D2_FALLBACK[vid] || D2_FALLBACK.car1;
@@ -1272,7 +1287,10 @@ function d2SimFallback(vid) {
   const load = Math.min(100,Math.max(0,spd/p.sMax*72+r()*16));
   let co2gkm=0,co2gmin=0;
   if (idle) {
-    co2gmin = +((p.truck?3+r()*5:0.3+r()*0.9)/60*p.kf*3.6).toFixed(1);
+    // Idle CO₂ (g/min): fuel_L/h ÷ 60 × kf_g/L
+  // Car 1.0-1.5L petrol+AC: 0.5-1.2 L/h → 19-46 g/min (DOE Fact #861, k=0.35 L/h/L)
+  // Truck 10-15L diesel: 1.5-3.5 L/h → 58-135 g/min (transpocodirect.com HDV idle)
+  co2gmin = +((p.truck?(1.5+r()*2.0):(0.5+r()*0.7))/60*p.kf).toFixed(1);
   } else {
     const Lt=load/100,omega=rpm*2*Math.PI/60;
     const bound=p.wA*Lt*omega+p.wB;
@@ -1371,13 +1389,14 @@ function d2InitChart() {
         x:{ ticks:{ color:'#4A6A85', font:{family:'DM Mono',size:9}, maxTicksLimit:8 },
             grid:{ color:'rgba(0,229,255,0.05)' }, border:{ color:'rgba(0,229,255,0.08)' } },
         y:{ position:'left', min:0,
+    suggestedMax: (D2_VEHICLES[d2Vehicle]?.proto?.includes('J1939') ? 2200 : 700),
             ticks:{ color:'#00E5FF', font:{family:'DM Mono',size:9} },
             grid:{ color:'rgba(0,229,255,0.06)' },
-            title:{ display:true, text:'CO₂ (g/km or g/min)', color:'#4A6A85', font:{family:'DM Mono',size:8} } },
+            title:{ display:true, text:'CO₂  ·  g/km (motion) | g/min (idle)', color:'var(--text-3)', font:{family:'DM Mono',size:8} } },
         y2:{ position:'right', min:0,
              ticks:{ color:'rgba(255,109,0,0.7)', font:{family:'DM Mono',size:9} },
              grid:{ display:false }, border:{ color:'transparent' },
-             title:{ display:true, text:'Speed km/h', color:'rgba(255,109,0,0.5)', font:{family:'DM Mono',size:8} } }
+             title:{ display:true, text:'Speed km/h', color:'rgba(255,109,0,0.7)', font:{family:'DM Mono',size:8} } }
       }
     }
   });
@@ -1399,12 +1418,20 @@ function switchVehicle2(vid) {
     if (!btn) return;
     const active = v === vid;
     const col    = D2_VEHICLES[v].color;
-    btn.style.border     = '1px solid ' + (active ? col : 'var(--border)');
+    const india  = v.startsWith('mg_');
+    btn.style.border     = '1px solid ' + (active ? col : (india ? 'rgba(255,167,38,0.2)' : 'rgba(0,229,255,0.2)'));
     btn.style.color      = active ? col : 'var(--text-3)';
     btn.style.background = active ? col + '22' : 'transparent';
   });
 
-  if (d2Chart) { d2Chart.data.labels=[]; d2Chart.data.datasets[0].data=[]; d2Chart.data.datasets[1].data=[]; d2Chart.update('none'); }
+  if (d2Chart) {
+    d2Chart.data.labels=[];
+    d2Chart.data.datasets[0].data=[];
+    d2Chart.data.datasets[1].data=[];
+    const isTruck = D2_VEHICLES[vid]?.proto?.includes('J1939');
+    d2Chart.options.scales.y.suggestedMax = isTruck ? 2200 : 700;
+    d2Chart.update('none');
+  }
   d2LoadHistory(vid);
   d2Tick();
 }
@@ -2270,7 +2297,7 @@ if (archEl) archObs.observe(archEl);
           </div>
 
           <div style="background:var(--bg3);border:1px solid rgba(0,229,255,0.25);border-radius:8px;padding:14px;">
-            <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Current CO&#8322;</div>
+            <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Live CO&#8322; <span id="map-regime-lbl" style="font-family:var(--mono);font-size:0.55rem;color:var(--text-3);">g/km</span></div>
             <div id="map-co2" style="font-family:var(--display);font-size:1.8rem;font-weight:700;color:var(--cyan);">—</div>
             <div id="map-unit" style="font-family:var(--mono);font-size:0.68rem;color:var(--text-3);">g/km</div>
           </div>
@@ -2471,7 +2498,7 @@ if (archEl) archObs.observe(archEl);
             </div>
             <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
               <span style="color:var(--text-2);">CarbonPilot Car-1 avg</span>
-              <span style="font-family:var(--mono);color:var(--cyan);">~172 g/km</span>
+              <span style="font-family:var(--mono);color:var(--cyan);">~169 g/km</span>
             </div>
             <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
               <span style="color:var(--text-2);">Format</span>
@@ -2480,7 +2507,7 @@ if (archEl) archObs.observe(archEl);
           </div>
           <div style="margin-top:12px;padding:8px 10px;background:rgba(255,109,0,0.04);border-radius:4px;border:1px solid rgba(255,109,0,0.12);">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--amber);margin-bottom:3px;">CarbonPilot relevance</div>
-            <div style="font-size:0.75rem;color:var(--text-2);line-height:1.5;">Car-1 (Sandero) CO₂ average of ~172 g/km matches Canada compact car range of 140–175 g/km — independent cross-validation.</div>
+            <div style="font-size:0.75rem;color:var(--text-2);line-height:1.5;">Car-1 (Sandero) CO₂ average of ~169 g/km matches Canada compact car range of 140–175 g/km — independent cross-validation.</div>
           </div>
           <a href="https://open.canada.ca/data/en/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64" target="_blank" rel="noopener"
              style="display:block;margin-top:10px;font-family:var(--mono);font-size:0.62rem;color:var(--amber);text-decoration:none;opacity:0.7;">
@@ -2564,7 +2591,7 @@ if (archEl) archObs.observe(archEl);
           </div>
           <div style="margin-top:12px;padding:8px 10px;background:rgba(255,59,59,0.04);border-radius:4px;border:1px solid rgba(255,59,59,0.12);">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--red);margin-bottom:3px;">CarbonPilot relevance</div>
-            <div style="font-size:0.75rem;color:var(--text-2);line-height:1.5;">Car-2 (HB20, 15.8% idle) at ~448 g/km appears high but reflects stop-start urban Belo Horizonte driving — confirms city driving can be 3–4× EU WLTP.</div>
+            <div style="font-size:0.75rem;color:var(--text-2);line-height:1.5;">Car-2 (HB20, 15.8% idle) at ~372 g/km appears high but reflects stop-start urban Belo Horizonte driving — confirms city driving can be 3–4× EU WLTP.</div>
           </div>
           <a href="https://www.eea.europa.eu/en/datahub/datahubitem-view/fa8b1229-3db6-495d-b18e-9c9b3267c02b" target="_blank" rel="noopener"
              style="display:block;margin-top:10px;font-family:var(--mono);font-size:0.62rem;color:var(--red);text-decoration:none;opacity:0.7;">
@@ -2633,7 +2660,7 @@ if (archEl) archObs.observe(archEl);
           </tr>
           <tr style="border-top:1px solid var(--border);">
             <td style="padding:10px 16px;font-size:0.82rem;color:var(--text-2);">Car-1 Renault Sandero (urban BH)</td>
-            <td style="padding:10px 16px;text-align:center;font-family:var(--mono);font-size:0.8rem;color:var(--cyan);">~172 g/km</td>
+            <td style="padding:10px 16px;text-align:center;font-family:var(--mono);font-size:0.8rem;color:var(--cyan);">~169 g/km</td>
             <td style="padding:10px 16px;text-align:center;font-family:var(--mono);font-size:0.8rem;color:var(--amber);">140–175 g/km</td>
             <td style="padding:10px 16px;font-size:0.75rem;color:var(--text-3);">Canada NRCan compact class</td>
             <td style="padding:10px 16px;text-align:center;color:var(--green);">✓</td>
@@ -2810,7 +2837,7 @@ if (archEl) archObs.observe(archEl);
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
             <div style="background:var(--bg2);border-radius:6px;padding:10px;text-align:center;">
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);">CO₂ avg</div>
-              <div style="font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--red);">298</div>
+              <div style="font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--red);">264</div>
               <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">g/km motion</div>
             </div>
             <div style="background:var(--bg2);border-radius:6px;padding:10px;text-align:center;">
@@ -2820,15 +2847,15 @@ if (archEl) archObs.observe(archEl);
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:5px;font-size:0.78rem;color:var(--text-2);">
-            <div style="display:flex;justify-content:space-between;"><span>Idle fraction</span><span style="font-family:var(--mono);color:var(--red);">88.8%</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Avg speed (motion)</span><span style="font-family:var(--mono);">50.8 km/h</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Idle fraction</span><span style="font-family:var(--mono);color:var(--red);">90.7%</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Avg speed (motion)</span><span style="font-family:var(--mono);">36.3 km/h</span></div>
             <div style="display:flex;justify-content:space-between;"><span>Records (7 days)</span><span style="font-family:var(--mono);">74,841</span></div>
             <div style="display:flex;justify-content:space-between;"><span>GPS region</span><span style="font-family:var(--mono);">18.56°N 73.77°E</span></div>
             <div style="display:flex;justify-content:space-between;"><span>Outside temp</span><span style="font-family:var(--mono);">30–34°C</span></div>
             <div style="display:flex;justify-content:space-between;"><span>ARAI baseline</span><span style="font-family:var(--mono);color:var(--green);">150 g/km</span></div>
           </div>
           <div style="margin-top:10px;padding:8px;background:rgba(255,59,59,0.06);border-radius:4px;font-family:var(--mono);font-size:0.6rem;color:var(--red);">
-            idle_pct = 88.8%  ·  CO₂ idle = 28.6 g/min  ·  Pune suburban profile.
+            idle_pct = 90.7%  ·  CO₂ idle = 28.6 g/min  ·  Pune suburban profile.
           </div>
           <button onclick="mgSwitch('mg_pune')" style="margin-top:10px;width:100%;padding:8px;font-family:var(--mono);font-size:0.68rem;background:rgba(255,59,59,0.12);border:1px solid rgba(255,59,59,0.3);color:var(--red);border-radius:4px;cursor:pointer;">▶ Stream Live Data</button>
         </div>
@@ -2867,15 +2894,15 @@ if (archEl) archObs.observe(archEl);
           <td style="padding:9px 16px;font-size:0.82rem;">MG ZS (Pune)</td>
           <td style="padding:9px 16px;text-align:center;font-family:var(--mono);font-size:0.75rem;color:var(--red);">MG-CAN</td>
           <td style="padding:9px 16px;text-align:center;font-size:0.82rem;">🇮🇳 India</td>
-          <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;">298 g/km</td>
-          <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;color:var(--red);">88.8%</td>
+          <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;">264 g/km</td>
+          <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;color:var(--red);">90.7%</td>
           <td style="padding:9px 16px;font-size:0.75rem;color:var(--text-3);">SPD, RPM, coolant, GPS, fuel consumed, 177 PIDs</td>
         </tr>
         <tr style="border-top:1px solid var(--border);background:rgba(0,229,255,0.03);">
           <td style="padding:9px 16px;font-size:0.82rem;color:var(--text-3);">Car-1 Sandero (BH)</td>
           <td style="padding:9px 16px;text-align:center;font-family:var(--mono);font-size:0.75rem;color:var(--cyan);">OBD-II</td>
           <td style="padding:9px 16px;text-align:center;font-size:0.82rem;">🇧🇷 Brazil</td>
-          <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;color:var(--cyan);">172 g/km</td>
+          <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;color:var(--cyan);">~169 g/km</td>
           <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;">8.1%</td>
           <td style="padding:9px 16px;font-size:0.75rem;color:var(--text-3);">SPD, RPM, load, coolant, GPS — standard OBD-II</td>
         </tr>
@@ -2961,7 +2988,7 @@ function mgSwitch(vid) {
         </div>
         <table class="perf-table">
           <tr><th>Method</th><th>RMSE g/km</th><th>R²</th></tr>
-          <tr><td class="model-name">COPERT-5</td><td>62.4</td><td>0.432</td></tr>
+          <tr style="opacity:0.65;"><td class="model-name">COPERT-5 (EEA)</td><td>62.4</td><td>0.432</td></tr>
           <tr><td class="model-name">SA-LSTM</td><td>55.3 ±3.4</td><td>0.568</td></tr>
           <tr><td class="model-name">LF-LSTM</td><td>44.2 ±2.8</td><td>0.851</td></tr>
           <tr><td class="model-name">LF-CNN-LSTM</td><td>39.6 ±2.4</td><td>0.871</td></tr>
@@ -2975,6 +3002,7 @@ function mgSwitch(vid) {
         </div>
         <table class="perf-table">
           <tr><th>Method</th><th>RMSE g/km</th><th>R²</th></tr>
+          <tr style="opacity:0.65;"><td class="model-name">COPERT-5 (EEA)</td><td>249.2</td><td>0.186</td></tr>
           <tr><td class="model-name">SA-LSTM</td><td>311 ±22</td><td>0.341</td></tr>
           <tr><td class="model-name">LF-LSTM</td><td>249 ±14</td><td>0.572</td></tr>
           <tr><td class="model-name">LF-CNN-LSTM</td><td>214 ±12</td><td>0.661</td></tr>
@@ -3261,7 +3289,7 @@ async function mapUpdate(d) {
   const lat = d.lat, lon = d.lon;
   if (!lat || !lon || lat===0 || lon===0) return;
 
-  const isTruck = d.vehicle?.toLowerCase().includes('truck') || d.protocol?.includes('1939');
+  const isTruck = d.vehicle?.toLowerCase().includes('truck') || (d.protocol?.includes('1939') || d.protocol?.includes('J1939'));
   const co2     = d.is_idle ? d.co2_gmin : d.co2_gkm;
 
   // ── Async geo enrichment (non-blocking) ──────────────────────────────
@@ -3288,6 +3316,9 @@ async function mapUpdate(d) {
   document.getElementById('map-co2').textContent = adjCO2 > 0 ? adjCO2 : (d.is_idle ? '~0' : '—');
   document.getElementById('map-co2').style.color = color;
   document.getElementById('map-unit').textContent = d.is_idle ? 'g/min (idle)' :
+    (gradFactor > 1.01 ? `g/km (+${((gradFactor-1)*100).toFixed(0)}% grade)` : 'g/km');
+  const regimeEl = document.getElementById('map-regime-lbl');
+  if (regimeEl) regimeEl.textContent = d.is_idle ? 'g/min' : 'g/km';
     (gradFactor > 1.01 ? `g/km (+${((gradFactor-1)*100).toFixed(0)}% grade)` : 'g/km');
 
   // Core stats
@@ -3474,7 +3505,7 @@ if (mapEl) mapObs.observe(mapEl);
             <div style="font-size:0.82rem;color:var(--text-2);">&#9679; MRV data infrastructure for Verra VCS projects</div>
             <div style="font-size:0.82rem;color:var(--text-2);">&#9679; Anti-idling programme measurement (qualifying measure)</div>
             <div style="font-size:0.82rem;color:var(--text-2);">&#9679; 2–5% data verification fee on credit revenue</div>
-            <div style="font-size:0.82rem;color:var(--text-2);">&#9679; EU ETS2 (road transport, 2027): €46–€75/tonne initial; €149/tonne by 2030 (BNEF) opportunity</div>
+            <div style="font-size:0.82rem;color:var(--text-2);">&#9679; EU ETS2 (road transport, 2028): €46–€75/tonne initial; €149/tonne by 2030 (BNEF) opportunity</div>
           </div>
           <div style="margin-top:12px;padding:8px 12px;background:rgba(255,109,0,0.08);border:1px solid rgba(255,109,0,0.2);border-radius:4px;font-family:var(--mono);font-size:0.62rem;color:var(--amber);">
             ⚠ Per-truck VCM credits ($6–18/yr) not viable standalone below 5,000-vehicle pool. Primary near-term value: CSRD insetting + MRV data licensing.
@@ -3612,7 +3643,7 @@ if (mapEl) mapObs.observe(mapEl);
       <span style="font-size:1.2rem;flex-shrink:0;">⚠</span>
       <div style="font-family:var(--mono);font-size:0.7rem;color:var(--amber);line-height:1.7;">
         <strong>Research-validated estimates only.</strong> VCM energy-efficiency credits currently trade at $4–$8/tonne (Ecosystem Marketplace 2024).
-        EU ETS (€45–65/tonne) covers <em>stationary installations only</em> — road transport enters ETS2 from 2027.
+        EU ETS (€45–65/tonne) covers <em>stationary installations only</em> — road transport enters ETS2 from 2028.
         VMR0004 v2.0 credits <em>reductions from interventions</em>, not baseline emissions. Verra VVB audit: $15,000–$40,000.
         Minimum viable pooled fleet: ~5,000 vehicles for audit cost recovery. Standalone per-truck credits are not economically viable below this threshold.
       </div>
@@ -3688,11 +3719,11 @@ if (mapEl) mapObs.observe(mapEl);
           <!-- Credit price -->
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-              <label style="font-family:var(--mono);font-size:0.68rem;color:var(--text-2);text-transform:uppercase;letter-spacing:0.1em;">VCM Credit Price ($/tonne)</label>
-              <span id="cc-price-val" style="font-family:var(--display);font-weight:700;color:var(--violet);">$6</span>
+              <label style="font-family:var(--mono);font-size:0.68rem;color:var(--text-2);text-transform:uppercase;letter-spacing:0.1em;">VCM Credit Price ($/tonne) · $6.34 avg 2024 (Ecosystem Marketplace)</label>
+              <span id="cc-price-val" style="font-family:var(--display);font-weight:700;color:var(--violet);">$6/t</span>
             </div>
             <input type="range" id="cc-price" min="2" max="20" value="6" step="1"
-              oninput="document.getElementById('cc-price-val').textContent='$'+this.value;ccCalc()"
+              oninput="document.getElementById('cc-price-val').textContent='$'+this.value+'/t';ccCalc()"
               style="width:100%;accent-color:var(--violet);">
             <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.58rem;color:var(--text-3);">
               <span>$2 (low-quality)</span><span>$20 (premium, CCP-labelled)</span>
@@ -3833,7 +3864,7 @@ function ccCalc() {
     Pool with partner fleets to reach 5,000+ vehicles under one VMR0004 v2.0 project umbrella.
     Estimated revenue <strong>$${fmt(annualRevenue)}/year</strong> at current scale covers ~${(annualRevenue/25000*100).toFixed(0)}% of VVB audit cost.
     Primary monetisation today: <strong style="color:var(--cyan)">corporate verified CO₂ data licensing</strong> + CSRD compliance reporting.
-    ETS2 (EU, from 2027) at €46–€75/tonne initial; €149/tonne by 2030 (BNEF) will dramatically improve economics for EU-registered fleets.`;
+    ETS2 (EU, from 2028) at €46–€75/tonne initial; €149/tonne by 2030 (BNEF) will dramatically improve economics for EU-registered fleets.`;
   } else {
     rec = `<span style="color:var(--green);font-weight:600;">✅ Viable for Verra VCS VMR0004 v2.0 registration.</span>
     Fleet of ${fleet} vehicles generates <strong>${fmt(totalReducedCO2)} tCO₂e/year</strong> in verifiable reductions.
