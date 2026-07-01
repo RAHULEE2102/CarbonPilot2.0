@@ -260,6 +260,101 @@ async def metrics():
         "architecture": "three-tier hybrid edge-cloud",
     })
 
+
+@app.get("/api/prognosis/{vehicle_id}")
+def get_prognosis(vehicle_id: str):
+    """
+    ISO 13381-2 engine health prognosis via CO2 performance trending.
+    Thresholds: LTFT +-5% healthy, +-15% warning, +-25% critical (P0171/P0174 zone).
+    Sources: Innova, FleetRabbit, AutoDTCs, HeavyVehicleInspection, JRC ScienceDirect 2020.
+    """
+    if vehicle_id not in STREAM:
+        raise HTTPException(status_code=404, detail=f"Vehicle {vehicle_id} not found")
+    rows  = list(STREAM[vehicle_id])
+    if len(rows) < 20:
+        return {"status": "insufficient_data", "vehicle_id": vehicle_id}
+
+    is_truck  = vehicle_id.startswith("truck")
+    meta      = VEHICLE_META.get(vehicle_id, {})
+    km_proxy  = meta.get("records", len(rows)) * 0.15
+    lifecycle = 800_000 if is_truck else 250_000
+    mileage_f = max(0.5, 1.0 - km_proxy / lifecycle)
+
+    motion = [r for r in rows if not r.get("idle", False) and r.get("co2k", 0) > 0]
+    idle   = [r for r in rows if r.get("idle", False)     and r.get("co2m", 0) > 0]
+    cool_v = [r.get("cool", 0) for r in rows if r.get("cool", 0) > 0]
+    load_v = [r.get("load", 0) for r in motion if r.get("load", 0) > 0]
+
+    bins = {"s0_20": [], "s20_40": [], "s40_60": [], "s60p": []}
+    for i, r in enumerate(motion):
+        spd = r.get("spd", 0)
+        key = "s0_20" if spd < 20 else "s20_40" if spd < 40 else "s40_60" if spd < 60 else "s60p"
+        bins[key].append((i, r["co2k"]))
+
+    bin_deltas, bin_details = [], {}
+    for key, pts in bins.items():
+        if len(pts) < 8: continue
+        n = len(pts)
+        base_pts = pts[:max(1, int(n * 0.40))]
+        curr_pts = pts[max(0, int(n * 0.80)):]
+        if not curr_pts: continue
+        base_avg = sum(c for _, c in base_pts) / len(base_pts)
+        curr_avg = sum(c for _, c in curr_pts) / len(curr_pts)
+        if base_avg > 5:
+            d = (curr_avg - base_avg) / base_avg * 100.0
+            bin_deltas.append(d)
+            bin_details[key] = {"baseline": round(base_avg, 1), "current": round(curr_avg, 1), "delta_pct": round(d, 1)}
+
+    delta_pct  = sum(bin_deltas) / len(bin_deltas) if bin_deltas else 0.0
+    raw_health = max(0.0, min(100.0, 100.0 - delta_pct * 4.0))
+    health_pct = round(raw_health * (0.70 + 0.30 * mileage_f))
+
+    idle_avg      = sum(r["co2m"] for r in idle) / len(idle) if idle else 0
+    expected_idle = 75.0 if is_truck else 28.0
+    idle_delta    = (idle_avg - expected_idle) / expected_idle * 100.0 if expected_idle else 0
+
+    cool_avg     = sum(cool_v) / len(cool_v) if cool_v else 80.0
+    cool_anomaly = bool(cool_avg < 70)
+    load_avg     = sum(load_v) / len(load_v) if load_v else 50.0
+
+    fault_type = "None detected"; fault_code = "—"; maintenance = "Continue monitoring. No action required."
+    if cool_anomaly and delta_pct > 3:
+        fault_type = "Thermostat stuck open"; fault_code = "Coolant deviation"
+        maintenance = "Inspect thermostat. Cold engine runs rich. Replace if coolant stays below 70 degC."
+    elif abs(idle_delta) > 30 and delta_pct < 8:
+        fault_type = "Vacuum leak / idle air control"; fault_code = "P0171/P0174 risk"
+        maintenance = "Check intake manifold gaskets, PCV hoses, brake booster line. Idle-selective CO2 elevation."
+    elif delta_pct > 20:
+        fault_type = "Fuel injector fouling / MAF sensor"; fault_code = "P0171/P0174 imminent"
+        maintenance = "Clean or replace fuel injectors. Check MAF sensor. Uniform CO2 elevation across all speed bins."
+    elif delta_pct > 12:
+        fault_type = "Air filter clog / partial injector wear"; fault_code = "Monitor LTFT"
+        maintenance = "Replace air filter. Inspect injectors. CO2 elevation worsening with RPM."
+    elif delta_pct > 5:
+        fault_type = "Early-stage fuel system drift"; fault_code = "LTFT watch"
+        maintenance = "Schedule air filter inspection. CO2 5% above baseline = fleet KPI maintenance flag."
+
+    rul_km = 9999
+    if len(bin_deltas) >= 2 and delta_pct > 0:
+        records_per_km = 1.0 / 0.15
+        slope_per_km   = delta_pct / max(1, len(motion) / records_per_km)
+        if slope_per_km > 0:
+            rul_km = round(max(0, 25.0 - delta_pct) / slope_per_km)
+
+    status = "healthy" if health_pct >= 85 else "warning" if health_pct >= 65 else "critical"
+
+    return {
+        "vehicle_id": vehicle_id, "vehicle_name": meta.get("name", vehicle_id),
+        "protocol": meta.get("protocol", "OBD-II"), "health_pct": health_pct,
+        "delta_co2_pct": round(delta_pct, 1), "idle_delta_pct": round(idle_delta, 1),
+        "cool_avg_c": round(cool_avg), "cool_anomaly": cool_anomaly,
+        "load_avg_pct": round(load_avg), "fault_type": fault_type,
+        "fault_code": fault_code, "maintenance": maintenance, "rul_km": rul_km,
+        "status": status, "bin_details": bin_details,
+        "standard": "ISO 13381-2 — Performance changes (trending) approach",
+        "ltft_equivalent": round(delta_pct, 1),
+    }
+
 @app.get("/health")
 async def health():
     return {"status":"ok","tier2_packets":sum(FLEET_TOTALS[v]["packets"] for v in STREAM)}

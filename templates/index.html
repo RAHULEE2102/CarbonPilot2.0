@@ -1079,7 +1079,7 @@ footer {
           <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);padding:0 2px;margin-left:6px;">🇮🇳</span>
           <button onclick="switchVehicle2('mg_mumbai')" id="tab-mg_mumbai" style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(255,167,38,0.2);background:transparent;color:var(--text-3);">MG Astor · Mumbai</button>
           <button onclick="switchVehicle2('mg_delhi')"  id="tab-mg_delhi"  style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(255,167,38,0.2);background:transparent;color:var(--text-3);">MG Hector · Delhi</button>
-          <button onclick="switchVehicle2('mg_pune')"   id="tab-mg_pune"   style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(255,167,38,0.2);background:transparent;color:var(--text-3);">MG ZS · Pune</button>
+          <button onclick="switchVehicle2('mg_pune')"   id="tab-mg_pune"   style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;border-radius:3px;cursor:pointer;letter-spacing:0.04em;transition:all 0.2s;border:1px solid rgba(255,167,38,0.2);background:transparent;color:var(--text-3);">MG Astor · Pune</button>
         </div>
       </div>
 
@@ -1190,7 +1190,7 @@ const D2_VEHICLES = {
   // 🇮🇳 India · MG iSmart T-BOX CAN · BS-VI petrol · IPCC 2.31 kg CO₂/L
   mg_mumbai: { name:'MG Astor · Mumbai',      proto:'MG-CAN',    color:'#FFA726', unit:'g/km' },
   mg_delhi:  { name:'MG Hector · Delhi NCR',  proto:'MG-CAN',    color:'#CE93D8', unit:'g/km' },
-  mg_pune:   { name:'MG ZS · Pune',           proto:'MG-CAN',    color:'#EF9A9A', unit:'g/km' },
+  mg_pune:   { name:'MG Astor 1.5L · Pune',   proto:'MG-CAN',    color:'#EF9A9A', unit:'g/km' },
 };
 
 let d2Vehicle = 'car1';
@@ -1827,7 +1827,7 @@ function depSwitch(mode) {
               <optgroup label="🇮🇳 India — MG T-BOX">
               <option value="mg_mumbai">MG Astor · Mumbai</option>
               <option value="mg_delhi">MG Hector · Delhi NCR</option>
-              <option value="mg_pune">MG ZS · Pune</option>
+              <option value="mg_pune">MG Astor · Pune</option>
               </optgroup>
             </select>
           </div>
@@ -2277,7 +2277,7 @@ if (archEl) archObs.observe(archEl);
           <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);margin-left:6px;margin-right:2px;">🇮🇳</span>
           <button onclick="mapSwitch('mg_mumbai')" id="mtab-mg_mumbai" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(255,152,0,0.2);background:transparent;color:var(--text-3);">MG Astor · Mumbai</button>
           <button onclick="mapSwitch('mg_delhi')" id="mtab-mg_delhi" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(255,152,0,0.2);background:transparent;color:var(--text-3);">MG Hector · Delhi</button>
-          <button onclick="mapSwitch('mg_pune')" id="mtab-mg_pune" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(255,152,0,0.2);background:transparent;color:var(--text-3);">MG ZS · Pune</button>
+          <button onclick="mapSwitch('mg_pune')" id="mtab-mg_pune" style="font-family:var(--mono);font-size:0.65rem;padding:5px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s;border:1px solid rgba(255,152,0,0.2);background:transparent;color:var(--text-3);">MG Astor · Pune</button>
         </div>
       </div>
 
@@ -2829,7 +2829,7 @@ if (archEl) archObs.observe(archEl);
       <!-- Pune -->
       <div style="background:var(--bg);border:1px solid rgba(255,59,59,0.3);border-radius:10px;overflow:hidden;">
         <div style="background:rgba(255,59,59,0.08);padding:14px 18px;border-bottom:1px solid rgba(255,59,59,0.2);">
-          <div style="font-family:var(--mono);font-size:0.6rem;color:var(--red);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">MG ZS · Pune</div>
+          <div style="font-family:var(--mono);font-size:0.6rem;color:var(--red);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">MG Astor · Pune</div>
           <div style="font-family:var(--display);font-size:1rem;font-weight:700;">1.5L Petrol · Suburban</div>
           <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);margin-top:2px;">VIN: MZ7DD1SPA8H151111 · MG-CAN T-BOX</div>
         </div>
@@ -2891,7 +2891,7 @@ if (archEl) archObs.observe(archEl);
           <td style="padding:9px 16px;font-size:0.75rem;color:var(--text-3);">SPD, RPM, coolant, ACC, GPS, fuel level, 177 PIDs</td>
         </tr>
         <tr style="border-top:1px solid var(--border);">
-          <td style="padding:9px 16px;font-size:0.82rem;">MG ZS (Pune)</td>
+          <td style="padding:9px 16px;font-size:0.82rem;">MG Astor (Pune)</td>
           <td style="padding:9px 16px;text-align:center;font-family:var(--mono);font-size:0.75rem;color:var(--red);">MG-CAN</td>
           <td style="padding:9px 16px;text-align:center;font-size:0.82rem;">🇮🇳 India</td>
           <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;">264 g/km</td>
