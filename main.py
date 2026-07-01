@@ -68,7 +68,11 @@ VEHICLE_META = {
     "car2":   {"name":"Car-2 · Hyundai HB20",   "protocol":"OBD-II",  "color":"#76FF03","records":6699},
     "truck1": {"name":"Truck-1 · EVO 8726",      "protocol":"J1939",   "color":"#FF6D00","records":159406},
     "truck2": {"name":"Truck-2 · FKQ 5624",      "protocol":"J1939",   "color":"#FF3B3B","records":191563},
-    "truck3": {"name":"Truck-3 · FIL 2471",      "protocol":"J1939",   "color":"#C77DFF","records":219486},
+    "truck3":    {"name":"Truck-3 · FIL 2471",      "protocol":"J1939",      "color":"#C77DFF","records":219486},
+    # MG India — real T-BOX CAN telemetry (Feb-Mar 2025, 7 days)
+    "mg_mumbai": {"name":"MG Astor · Mumbai",         "protocol":"MG-CAN T-BOX","color":"#FF6D00","records":44885},
+    "mg_delhi":  {"name":"MG Hector · Delhi NCR",     "protocol":"MG-CAN T-BOX","color":"#C77DFF","records":21177},
+    "mg_pune":   {"name":"MG ZS · Pune",              "protocol":"MG-CAN T-BOX","color":"#FF3B3B","records":74841},
 }
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -77,7 +81,7 @@ VEHICLE_META = {
 _FLEET_LOCK = threading.Lock()
 
 # Per-vehicle: last 50 trip summaries received from edge
-FLEET_TRIPS: dict[str, deque] = {v: deque(maxlen=50) for v in STREAM}
+FLEET_TRIPS: dict[str, deque] = {v: deque(maxlen=50) for v in STREAM}  # auto-includes MG India
 
 # Running totals (reset on server restart — production would use DB)
 FLEET_TOTALS: dict[str, dict] = {
