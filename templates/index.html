@@ -560,7 +560,7 @@ footer {
         <div style="font-family:var(--mono);font-size:0.65rem;color:var(--cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:14px;">01 · What it is</div>
         <div style="font-family:var(--display);font-size:1.5rem;font-weight:800;line-height:1.15;margin-bottom:16px;letter-spacing:-0.02em;">Fleet CO&#8322; Intelligence.<br>No Fuel Sensor. Protocol-agnostic.</div>
         <p style="color:var(--text-2);font-size:0.88rem;line-height:1.7;margin-bottom:18px;">CarbonPilot is an AI inference platform that estimates real-time CO&#8322; emissions from any vehicle — passenger car or commercial truck — using only standard OBD-II and SAE J1939 telematics signals already present on every modern vehicle.</p>
-        <p style="color:var(--text-2);font-size:0.88rem;line-height:1.7;">It runs the <strong style="color:var(--text);">LBCA-Net</strong> deep learning model (1.24M parameters, 4.9 MB, 3.1 ms inference) and produces ISO 14064-aligned Scope 1 emission reports at 1-Hz resolution — without any additional hardware, fuel-flow sensor, or cloud dependency for inference.</p>
+        <p style="color:var(--text-2);font-size:0.88rem;line-height:1.7;">It runs the <strong style="color:var(--text);">LBCA-Net</strong> deep learning model (1.24M parameters, 4.9 MB, 3.1 ms inference) and produces ISO 14064-aligned Scope 1 emission reports at 1-Hz resolution — without any additional hardware, fuel-flow sensor, or cloud dependency for inference. <em>Note: training-set ground-truth labels were derived from OBD fuel-channel data in the Rettore dataset; fuel-flow PID is not required at inference time.</em></p>
         <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
           <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);">Validated on</div>
           <div style="font-family:var(--display);font-size:1.8rem;font-weight:800;color:var(--cyan);">662,249</div>
@@ -576,7 +576,7 @@ footer {
         <div style="display:flex;flex-direction:column;gap:14px;">
           <div style="border-left:2px solid var(--amber);padding-left:14px;">
             <div style="font-family:var(--display);font-size:0.9rem;font-weight:700;color:var(--amber);margin-bottom:4px;">&#36;200–500/vehicle deployment tax</div>
-            <div style="font-family:var(--body);font-size:0.82rem;color:var(--text-2);line-height:1.6;">78% of fleet CO&#8322; models require fuel-flow PID (OBD 0x5E) — absent from 40–60% of real-world adapters. CarbonPilot eliminates this requirement entirely.</div>
+            <div style="font-family:var(--body);font-size:0.82rem;color:var(--text-2);line-height:1.6;">Many light-duty vehicles do not expose fuel-flow PID (OBD 0x5E) — the ECU either does not implement it or the adapter filters it — affecting a significant share of real-world deployments. CarbonPilot does not require this PID at inference.</div>
           </div>
           <div style="border-left:2px solid var(--red);padding-left:14px;">
             <div style="font-family:var(--display);font-size:0.9rem;font-weight:700;color:var(--red);margin-bottom:4px;">Protocol fragmentation costs double</div>
@@ -618,7 +618,7 @@ footer {
         </div>
 
         <div style="margin-top:16px;padding:10px 14px;background:rgba(118,255,3,0.06);border:1px solid rgba(118,255,3,0.2);border-radius:6px;">
-          <div style="font-family:var(--mono);font-size:0.62rem;color:var(--green);">Paper: IEEE T-ITS · Author: Dr. Rahul Kumar Dubey, Bosch BGSW</div>
+          <div style="font-family:var(--mono);font-size:0.62rem;color:var(--green);">Paper: IEEE T-ITS (Under Review) · Author: Dr. Rahul Kumar Dubey, Bosch BGSW</div>
         </div>
       </div>
     </div>
@@ -658,7 +658,7 @@ footer {
 <section id="hero">
   <div class="hero-eyebrow">
     <span class="dot-live"></span>
-    IEEE T-ITS · $18.4B Market · 662,249 Real Records · 5 Vehicles · 2 Protocols
+    IEEE T-ITS (Under Review) · $18.4B Market · 662,249 Real Records · 5 Vehicles · 2 Protocols
   </div>
   <h1 class="hero-title">
     <span class="accent" data-text="Carbon">Carbon</span>Pilot
@@ -672,11 +672,11 @@ footer {
   <div class="hero-metrics">
     <div class="metric-card">
       <div class="metric-val" data-target="24.3">0</div>
-      <div class="metric-lbl">±2.1 g/km · Car RMSE</div>
+      <div class="metric-lbl">g/km RMSE · Car  <span style="font-size:0.75em;opacity:0.7">(±2.1 CI)</span></div>
     </div>
     <div class="metric-card">
       <div class="metric-val amber" data-target="118.6">0</div>
-      <div class="metric-lbl">±9.4 g/km · Truck RMSE</div>
+      <div class="metric-lbl">g/km RMSE · Truck  <span style="font-size:0.75em;opacity:0.7">(±9.4 CI)</span></div>
     </div>
     <div class="metric-card">
       <div class="metric-val green" data-target="3.1">0</div>
@@ -706,7 +706,7 @@ footer {
       <div class="problem-card">
         <div class="prob-icon">⛽</div>
         <div class="prob-title">Fuel Sensor Lock-In</div>
-        <div class="prob-body">78% of existing CO₂ models require fuel-flow PID (0x5E) as input. This PID is absent on 40–60% of consumer OBD-II adapters, creating a $200–$500/vehicle deployment barrier that eliminates most real-world fleet deployments before they start.</div>
+        <div class="prob-body">Many existing CO₂ models require fuel-flow PID (0x5E) as input. This PID is frequently absent because the vehicle ECU does not expose it — creating a significant deployment barrier. CarbonPilot is trained and deployed without this PID at inferencers, creating a $200–$500/vehicle deployment barrier that eliminates most real-world fleet deployments before they start.</div>
       </div>
       <div class="problem-card">
         <div class="prob-icon">⚡</div>
@@ -2256,7 +2256,7 @@ if (archEl) archObs.observe(archEl);
 <!-- ─── VEHICLE MAP ──────────────────────────────────────────────────────────── -->
 <section id="map-section" style="background:var(--bg);border-top:1px solid var(--border);padding:80px 0;">
   <div class="container">
-    <div class="section-label">Real GPS Coordinates · Brazil 2014–2021</div>
+    <div class="section-label">Real GPS Coordinates · Brazil 2018–2021</div>
     <h2 class="section-title reveal">Live Vehicle Position Map</h2>
     <p class="section-sub reveal">Real recorded GPS trajectories from the paper's dataset. Select a vehicle to track its position and visualise CO₂ intensity along the route — green (low) → amber → red (high).</p>
 
@@ -2591,7 +2591,7 @@ if (archEl) archObs.observe(archEl);
           </div>
           <div style="margin-top:12px;padding:8px 10px;background:rgba(255,59,59,0.04);border-radius:4px;border:1px solid rgba(255,59,59,0.12);">
             <div style="font-family:var(--mono);font-size:0.6rem;color:var(--red);margin-bottom:3px;">CarbonPilot relevance</div>
-            <div style="font-size:0.75rem;color:var(--text-2);line-height:1.5;">Car-2 (HB20, 15.8% idle) at ~372 g/km appears high but reflects stop-start urban Belo Horizonte driving — confirms city driving can be 3–4× EU WLTP.</div>
+            <div style="font-size:0.75rem;color:var(--text-2);line-height:1.5;">Car-2 (HB20, 15.8% idle) at ~372 g/km mean (335 g/km median) appears high but reflects stop-start urban Belo Horizonte driving — confirms city driving can be 3–4× EU WLTP.</div>
           </div>
           <a href="https://www.eea.europa.eu/en/datahub/datahubitem-view/fa8b1229-3db6-495d-b18e-9c9b3267c02b" target="_blank" rel="noopener"
              style="display:block;margin-top:10px;font-family:var(--mono);font-size:0.62rem;color:var(--red);text-decoration:none;opacity:0.7;">
@@ -2635,7 +2635,7 @@ if (archEl) archObs.observe(archEl);
             </div>
             <div style="display:flex;align-items:center;gap:8px;font-size:0.78rem;">
               <span style="color:var(--green);font-size:1rem;">✓</span>
-              <span style="color:var(--text-2);">ETS2 forecast: €122–149/t by 2030 (BNEF)</span>
+              <span style="color:var(--text-2);">ETS2 forecast: ~€103/t by 2030; €214/t by 2035 (T&E / BNEF, post-2028 delay)</span>
             </div>
           </div>
           <div style="margin-top:14px;padding:10px;background:rgba(118,255,3,0.06);border:1px solid rgba(118,255,3,0.2);border-radius:6px;font-family:var(--mono);font-size:0.62rem;color:var(--green);">
@@ -2910,7 +2910,7 @@ if (archEl) archObs.observe(archEl);
           <td style="padding:9px 16px;font-size:0.82rem;color:var(--text-3);">Car-2 HB20 (BH)</td>
           <td style="padding:9px 16px;text-align:center;font-family:var(--mono);font-size:0.75rem;color:var(--cyan);">OBD-II</td>
           <td style="padding:9px 16px;text-align:center;font-size:0.82rem;">🇧🇷 Brazil</td>
-          <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;color:var(--cyan);">448 g/km</td>
+          <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;color:var(--cyan);">448 g/km <span style="font-size:0.75em;opacity:0.65">(mean)</span></td>
           <td style="padding:9px 16px;text-align:right;font-family:var(--mono);font-size:0.8rem;">15.8%</td>
           <td style="padding:9px 16px;font-size:0.75rem;color:var(--text-3);">SPD, RPM, load, coolant, GPS — standard OBD-II</td>
         </tr>
@@ -2935,7 +2935,7 @@ function mgSwitch(vid) {
   <div class="container">
     <div class="section-label">Validated Dataset</div>
     <h2 class="section-title reveal">662,249 Real Records · 2 Protocols · 2 Cities</h2>
-    <p class="section-sub reveal">Validated on the Rettore OBD-II dataset (Belo Horizonte, Brazil, 2014–2016) and a proprietary J1939 truck fleet dataset (São Paulo, Brazil, October 2021). Ground-truth CO₂ uncertainty: ±5% from J1939 fuel counter vs. calibrated NREL flow meters.</p>
+    <p class="section-sub reveal">Validated on the Rettore OBD-II dataset (Belo Horizonte, Brazil, 2018) and a proprietary J1939 truck fleet dataset (São Paulo, Brazil, October 2021). Ground-truth CO₂ uncertainty: ±5% from J1939 fuel counter vs. calibrated NREL flow meters.</p>
     <div class="dataset-grid reveal">
       <div class="dataset-card">
         <div class="ds-dot" style="background:var(--cyan);box-shadow:0 0 4px rgba(26,115,232,0.4)"></div>
@@ -3505,7 +3505,7 @@ if (mapEl) mapObs.observe(mapEl);
             <div style="font-size:0.82rem;color:var(--text-2);">&#9679; MRV data infrastructure for Verra VCS projects</div>
             <div style="font-size:0.82rem;color:var(--text-2);">&#9679; Anti-idling programme measurement (qualifying measure)</div>
             <div style="font-size:0.82rem;color:var(--text-2);">&#9679; 2–5% data verification fee on credit revenue</div>
-            <div style="font-size:0.82rem;color:var(--text-2);">&#9679; EU ETS2 (road transport, 2028): €46–€75/tonne initial; €149/tonne by 2030 (BNEF) opportunity</div>
+            <div style="font-size:0.82rem;color:var(--text-2);">&#9679; EU ETS2 (road transport, 2028): €46–€75/tonne initial; ~€103/tonne by 2030; €214/tonne by 2035 (T&amp;E / BNEF, post-Nov 2025 delay)</div>
           </div>
           <div style="margin-top:12px;padding:8px 12px;background:rgba(255,109,0,0.08);border:1px solid rgba(255,109,0,0.2);border-radius:4px;font-family:var(--mono);font-size:0.62rem;color:var(--amber);">
             ⚠ Per-truck VCM credits ($6–18/yr) not viable standalone below 5,000-vehicle pool. Primary near-term value: CSRD insetting + MRV data licensing.
@@ -3864,7 +3864,7 @@ function ccCalc() {
     Pool with partner fleets to reach 5,000+ vehicles under one VMR0004 v2.0 project umbrella.
     Estimated revenue <strong>$${fmt(annualRevenue)}/year</strong> at current scale covers ~${(annualRevenue/25000*100).toFixed(0)}% of VVB audit cost.
     Primary monetisation today: <strong style="color:var(--cyan)">corporate verified CO₂ data licensing</strong> + CSRD compliance reporting.
-    ETS2 (EU, from 2028) at €46–€75/tonne initial; €149/tonne by 2030 (BNEF) will dramatically improve economics for EU-registered fleets.`;
+    ETS2 (EU, from 2028) at €46–€75/tonne initial; ~€103/tonne by 2030; €214/tonne by 2035 (T&amp;E / BNEF, post-Nov 2025 delay) will dramatically improve economics for EU-registered fleets.`;
   } else {
     rec = `<span style="color:var(--green);font-weight:600;">✅ Viable for Verra VCS VMR0004 v2.0 registration.</span>
     Fleet of ${fleet} vehicles generates <strong>${fmt(totalReducedCO2)} tCO₂e/year</strong> in verifiable reductions.
@@ -3943,8 +3943,8 @@ document.addEventListener('DOMContentLoaded', ccCalc);
           Carbon<span style="color:var(--cyan)">Pilot</span>
         </div>
         <div class="footer-note-text">
-          Built on LBCA-Net &nbsp;·&nbsp; IEEE T-ITS 2026 &nbsp;·&nbsp; Robert Bosch GmbH<br>
-          Validated on 662,249 real records &nbsp;·&nbsp; 5 vehicles &nbsp;·&nbsp; OBD-II + SAE J1939 &nbsp;·&nbsp; Brazil 2014–2021
+          Built on LBCA-Net &nbsp;·&nbsp; IEEE T-ITS 2026 (Under Review) &nbsp;·&nbsp; Robert Bosch GmbH<br>
+          Validated on 662,249 real records &nbsp;·&nbsp; 5 vehicles &nbsp;·&nbsp; OBD-II + SAE J1939 &nbsp;·&nbsp; Brazil 2018–2021
         </div>
       </div>
       <div style="text-align:right">
