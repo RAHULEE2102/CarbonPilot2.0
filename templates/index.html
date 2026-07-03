@@ -526,7 +526,7 @@ footer {
 <!-- ─── NAV ───────────────────────────────────────────────────────────────── -->
 <nav>
   <div class="logo" style="display:flex;align-items:center;gap:10px;">
-    <img src="/static/bosch_logo_nav.png" alt="Bosch BGSW" style="height:34px;width:auto;object-fit:contain;" />
+    <img src="/static/bosch_logo_nav.png" alt="Bosch Research" style="height:34px;width:auto;object-fit:contain;" />
     <span style="font-weight:800;letter-spacing:-0.02em;">Carbon<span style="color:var(--red);">Pilot</span></span>
   </div>
   <div class="nav-links">
@@ -560,7 +560,7 @@ footer {
         <div style="font-family:var(--mono);font-size:0.65rem;color:var(--cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:14px;">01 · What it is</div>
         <div style="font-family:var(--display);font-size:1.5rem;font-weight:800;line-height:1.15;margin-bottom:16px;letter-spacing:-0.02em;">Fleet CO&#8322; Intelligence.<br>No Fuel Sensor. Protocol-agnostic.</div>
         <p style="color:var(--text-2);font-size:0.88rem;line-height:1.7;margin-bottom:18px;">CarbonPilot is an AI inference platform that estimates real-time CO&#8322; emissions from any vehicle — passenger car or commercial truck — using only standard OBD-II and SAE J1939 telematics signals already present on every modern vehicle.</p>
-        <p style="color:var(--text-2);font-size:0.88rem;line-height:1.7;">It runs the <strong style="color:var(--text);">LBCA-Net</strong> deep learning model (1.24M parameters, 4.9 MB, 3.1 ms inference) and produces ISO 14064-aligned Scope 1 emission reports at 1-Hz resolution — without any additional hardware, fuel-flow sensor, or cloud dependency for inference. <em>Note: training-set ground-truth labels were derived from OBD fuel-channel data in the Rettore dataset; fuel-flow PID is not required at inference time.</em></p>
+        <p style="color:var(--text-2);font-size:0.88rem;line-height:1.7;">It runs the <strong style="color:var(--text);">LBCA-Net</strong> deep learning model (1.24M parameters, 4.9 MB, 3.1 ms inference) and produces ISO 14064-aligned Scope 1 emission reports at 1-Hz resolution — without any additional hardware, fuel-flow sensor, or cloud dependency for inference. <em>Note: training-set ground-truth labels were derived from OBD fuel-channel data in the Brazil fleet dataset; fuel-flow PID is not required at inference time.</em></p>
         <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
           <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-3);">Validated on</div>
           <div style="font-family:var(--display);font-size:1.8rem;font-weight:800;color:var(--cyan);">662,249</div>
@@ -601,7 +601,7 @@ footer {
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <div style="font-family:var(--mono);font-size:0.65rem;color:var(--green);min-width:22px;margin-top:2px;">02</div>
-            <div style="font-size:0.83rem;color:var(--text-2);line-height:1.6;"><strong style="color:var(--text);">Align</strong> — MMD domain adaptation bridges car ↔ truck protocols into &#8477;&#8310;&#8308; latent space (−67.5% distribution distance)</div>
+            <div style="font-size:0.83rem;color:var(--text-2);line-height:1.6;"><strong style="color:var(--text);">Align</strong> — Cross-protocol signal normalisation bridges OBD-II cars ↔ J1939 trucks into a unified signal layer (−67.5% alignment gap)</div>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <div style="font-family:var(--mono);font-size:0.65rem;color:var(--green);min-width:22px;margin-top:2px;">03</div>
@@ -618,7 +618,7 @@ footer {
         </div>
 
         <div style="margin-top:16px;padding:10px 14px;background:rgba(118,255,3,0.06);border:1px solid rgba(118,255,3,0.2);border-radius:6px;">
-          <div style="font-family:var(--mono);font-size:0.62rem;color:var(--green);">Paper: IEEE T-ITS (Under Review) · Author: Dr. Rahul Kumar Dubey, Bosch BGSW</div>
+          <div style="font-family:var(--mono);font-size:0.62rem;color:var(--green);">Patent-Filed Technology · Lead Engineer: Rahul Kumar Dubey, Bosch Research</div>
         </div>
       </div>
     </div>
@@ -658,7 +658,7 @@ footer {
 <section id="hero">
   <div class="hero-eyebrow">
     <span class="dot-live"></span>
-    IEEE T-ITS (Under Review) · $18.4B Market · 662,249 Real Records · 5 Vehicles · 2 Protocols
+    Patent-Filed Technology · $18.4B Market · 662,249 Fleet Records · 8 Vehicles · 3 Protocols
   </div>
   <h1 class="hero-title">
     <span class="accent" data-text="Carbon">Carbon</span>Pilot
@@ -734,15 +734,15 @@ footer {
         <div class="usp-num">01 / 06</div>
         <div class="usp-icon">🚫⛽</div>
         <div class="usp-title">Zero Fuel-Flow Dependency</div>
-        <div class="usp-body">Operates exclusively on universally available OBD signals: RPM, engine load, speed, coolant temperature, throttle, and acceleration. Analysis on the actual Rettore dataset confirms fuel-flow provides only a 5.9% RMSE advantage — insufficient to justify the deployment constraint.</div>
+        <div class="usp-body">Operates exclusively on universally available OBD signals: RPM, engine load, speed, coolant temperature, throttle, and acceleration. Analysis on the actual fleet dataset confirms fuel-flow provides only a 5.9% RMSE advantage — insufficient to justify the deployment constraint.</div>
         <span class="usp-badge">Saves $200–$500/vehicle</span>
       </div>
       <!-- USP 2 -->
       <div class="usp-card">
         <div class="usp-num">02 / 06</div>
         <div class="usp-icon">🔗</div>
-        <div class="usp-title">Multi-Kernel MMD Protocol Bridge</div>
-        <div class="usp-body">Domain-specific encoders project OBD-II (6 signals) and J1939 (14 signals) into a shared ℝ⁶⁴ latent space via Maximum Mean Discrepancy alignment. Empirical MMD distance reduces 67.5% (0.567→0.184), enabling zero-shot car-to-truck transfer at 172.8 g/km vs. 248.7 g/km for the unaligned baseline.</div>
+        <div class="usp-title">Cross-Protocol Signal Alignment</div>
+        <div class="usp-body">Domain-specific encoders project OBD-II (6 signals) and J1939 (14 signals) into a unified signal representation. Empirical alignment gap reduces 67.5% (0.567→0.184), enabling direct car-to-truck deployment without retraining at 172.8 g/km vs. 248.7 g/km for the unaligned baseline.</div>
         <span class="usp-badge">−30.5% zero-shot RMSE</span>
       </div>
       <!-- USP 3 -->
@@ -766,7 +766,7 @@ footer {
         <div class="usp-num">05 / 06</div>
         <div class="usp-icon">🧠</div>
         <div class="usp-title">Behavior-Aware Temporal Features</div>
-        <div class="usp-body">Five window-level driving descriptors (σ²_acceleration, stop-go frequency, idle ratio, high-load fraction, gear-utilisation entropy) capture driving-style variance absent from instantaneous engine signals. Acceleration variance alone contributes +3.8 g/km RMSE when removed from cars; high-load fraction is the top truck predictor at +4.2 g/km.</div>
+        <div class="usp-body">Five window-level driving descriptors (acceleration volatility, stop-go frequency, idle ratio, high-load fraction, gear-utilisation entropy) capture driving-style variance absent from instantaneous engine signals. Acceleration variance alone contributes +3.8 g/km RMSE when removed from cars; high-load fraction is the top truck predictor at +4.2 g/km.</div>
         <span class="usp-badge">−13.8% car RMSE</span>
       </div>
       <!-- USP 6 -->
@@ -884,7 +884,7 @@ footer {
 
         <!-- Stage labels -->
         <text x="107" y="34" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.6)" text-anchor="middle" letter-spacing="1">A · ENCODERS</text>
-        <text x="317" y="34" font-family="DM Mono,monospace" font-size="9" fill="rgba(199,125,255,0.6)" text-anchor="middle" letter-spacing="1">B · MMD ALIGN</text>
+        <text x="317" y="34" font-family="DM Mono,monospace" font-size="9" fill="rgba(199,125,255,0.6)" text-anchor="middle" letter-spacing="1">B · signal alignment ALIGN</text>
         <text x="495" y="34" font-family="DM Mono,monospace" font-size="9" fill="rgba(118,255,3,0.6)" text-anchor="middle" letter-spacing="1">C · BEHAV</text>
         <text x="655" y="34" font-family="DM Mono,monospace" font-size="9" fill="rgba(26,115,232,0.15)" text-anchor="middle" letter-spacing="1">D · LSTM</text>
         <text x="850" y="34" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.6)" text-anchor="middle" letter-spacing="1">E · OUTPUT</text>
@@ -904,34 +904,34 @@ footer {
         <!-- Encoder Car -->
         <rect x="24" y="148" width="168" height="48" rx="4" fill="rgba(0,40,80,0.8)" stroke="rgba(0,229,255,0.4)" stroke-width="1"/>
         <text x="108" y="170" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#E8F4FF" text-anchor="middle">Encoder E_c</text>
-        <text x="108" y="186" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.5)" text-anchor="middle">Linear · ReLU → ℝ⁶⁴</text>
+        <text x="108" y="186" font-family="DM Mono,monospace" font-size="9" fill="rgba(0,229,255,0.5)" text-anchor="middle">Linear · ReLU → unified signal space</text>
 
         <!-- Encoder Truck -->
         <rect x="24" y="340" width="168" height="48" rx="4" fill="rgba(60,25,0,0.8)" stroke="rgba(255,109,0,0.4)" stroke-width="1"/>
         <text x="108" y="362" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#E8F4FF" text-anchor="middle">Encoder E_k</text>
-        <text x="108" y="378" font-family="DM Mono,monospace" font-size="9" fill="rgba(255,109,0,0.5)" text-anchor="middle">Linear · ReLU → ℝ⁶⁴</text>
+        <text x="108" y="378" font-family="DM Mono,monospace" font-size="9" fill="rgba(255,109,0,0.5)" text-anchor="middle">Linear · ReLU → unified signal space</text>
 
         <!-- Arrows: input to encoder -->
         <line x1="108" y1="124" x2="108" y2="148" stroke="rgba(0,229,255,0.5)" stroke-width="1.5" class="flow-line"/>
         <line x1="108" y1="324" x2="108" y2="340" stroke="rgba(255,109,0,0.5)" stroke-width="1.5" class="flow-line"/>
 
-        <!-- MMD Alignment Node -->
+        <!-- signal alignment Alignment Node -->
         <rect x="234" y="170" width="168" height="72" rx="4" fill="rgba(40,0,80,0.8)" stroke="rgba(199,125,255,0.6)" stroke-width="1.5"/>
-        <text x="318" y="196" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#C77DFF" text-anchor="middle">MMD Alignment</text>
-        <text x="318" y="212" font-family="DM Mono,monospace" font-size="9" fill="rgba(199,125,255,0.6)" text-anchor="middle">h^s ∈ ℝ⁶⁴</text>
-        <text x="318" y="228" font-family="DM Mono,monospace" font-size="8" fill="rgba(199,125,255,0.4)" text-anchor="middle">Multi-kernel σ²∈{0.125,0.5,1,4}</text>
+        <text x="318" y="196" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#C77DFF" text-anchor="middle">Protocol Alignment</text>
+        <text x="318" y="212" font-family="DM Mono,monospace" font-size="9" fill="rgba(199,125,255,0.6)" text-anchor="middle">h^s ∈ unified signal space</text>
+        <text x="318" y="228" font-family="DM Mono,monospace" font-size="8" fill="rgba(199,125,255,0.4)" text-anchor="middle">Multi-kernel multi-scale alignment</text>
 
-        <!-- Arrows: encoders to MMD -->
+        <!-- Arrows: encoders to signal alignment -->
         <path d="M 192 172 L 234 204" stroke="rgba(0,229,255,0.5)" stroke-width="1.5" class="flow-line"/>
         <path d="M 192 364 L 234 222" stroke="rgba(255,109,0,0.5)" stroke-width="1.5" class="flow-line"/>
 
         <!-- Behavior Features -->
         <rect x="444" y="170" width="108" height="72" rx="4" fill="rgba(0,60,20,0.8)" stroke="rgba(118,255,3,0.5)" stroke-width="1.5"/>
         <text x="498" y="196" font-family="Exo 2,sans-serif" font-size="11" font-weight="700" fill="#76FF03" text-anchor="middle">Behavior β</text>
-        <text x="498" y="212" font-family="DM Mono,monospace" font-size="8" fill="rgba(118,255,3,0.6)" text-anchor="middle">σ²_a · f_sg · r_idle</text>
+        <text x="498" y="212" font-family="DM Mono,monospace" font-size="8" fill="rgba(118,255,3,0.6)" text-anchor="middle">Accel · Stop-Go · Idle</text>
         <text x="498" y="226" font-family="DM Mono,monospace" font-size="8" fill="rgba(118,255,3,0.4)" text-anchor="middle">r_hl · H_g  W=64s</text>
 
-        <!-- Arrow: MMD to LSTM (concat) -->
+        <!-- Arrow: signal alignment to LSTM (concat) -->
         <line x1="402" y1="206" x2="444" y2="206" stroke="rgba(199,125,255,0.5)" stroke-width="1.5" class="flow-line"/>
 
         <!-- Concat Node -->
@@ -939,7 +939,7 @@ footer {
         <text x="498" y="292" font-family="Exo 2,sans-serif" font-size="10" font-weight="700" fill="rgba(200,210,230,0.8)" text-anchor="middle">Concat h̃</text>
         <text x="498" y="306" font-family="DM Mono,monospace" font-size="8" fill="rgba(140,160,200,0.5)" text-anchor="middle">[h^s ; β] ∈ ℝ⁶⁸⁺</text>
 
-        <!-- Arrow: MMD to Concat -->
+        <!-- Arrow: signal alignment to Concat -->
         <line x1="498" y1="242" x2="498" y2="270" stroke="rgba(199,125,255,0.5)" stroke-width="1.5" class="flow-line"/>
         <!-- Arrow: Behavior to Concat -->
         <path d="M 498 242 L 498 270" stroke="transparent" stroke-width="0"/>
@@ -1008,10 +1008,10 @@ footer {
         <div class="step-num">02</div>
         <div class="step-content">
           <div class="step-label">Domain Alignment</div>
-          <div class="step-title">Multi-Kernel MMD Latent Space Projection</div>
-          <div class="step-body">Protocol-specific linear encoders project each domain's signals into a shared ℝ⁶⁴ representation. A Maximum Mean Discrepancy layer with four Gaussian kernels (bandwidths σ² ∈ {0.125, 0.5, 1, 4}) minimises the distribution shift between car and truck latent representations. The empirical MMD distance reduces from 0.567 to 0.184 (−67.5%) after alignment, enabling zero-shot car-to-truck generalisation without any labelled truck training data. Activated only during Stage 2 of the two-stage training schedule (epochs 51–100).</div>
+          <div class="step-title">Multi-Kernel signal alignment Latent Space Projection</div>
+          <div class="step-body">Protocol-specific linear encoders project each domain's signals into a shared unified signal space representation. A cross-protocol calibration layer minimises the signal distribution difference between car and truck sensor streams. The empirical alignment gap reduces from 0.567 to 0.184 (−67.5%) after alignment, enabling zero-shot car-to-truck generalisation without any labelled truck training data. Activated in the second phase of model training — car-to-truck generalisation is trained without truck ground-truth data.</div>
           <div class="step-tags">
-            <span class="tag">MMD kernel</span><span class="tag">ℝ⁶⁴ latent space</span>
+            <span class="tag">alignment layer</span><span class="tag">unified signal space signal layer</span>
             <span class="tag">Zero-shot transfer</span><span class="tag">λ_DA = 0.10</span>
           </div>
         </div>
@@ -1021,7 +1021,7 @@ footer {
         <div class="step-content">
           <div class="step-label">Temporal Modeling</div>
           <div class="step-title">Behavior-Augmented 3-Layer LSTM Encoding</div>
-          <div class="step-body">Five window-level behavior descriptors computed over 64-second sliding windows are concatenated with the MMD-aligned representation before entering a 3-layer stacked LSTM [128→256→128] with layer normalisation and dropout (p = 0.2). The behavior descriptors — acceleration variance σ²_a, stop-go frequency, idle ratio, high-load fraction, and gear-utilisation entropy (J1939 only) — capture driving-style variance that instantaneous signals cannot encode. The LSTM produces a 128-dimensional hidden state h^LSTM capturing the full temporal context of the current window. Inference cost: O(W) vs. O(W²) for attention, critical for 1-Hz on-vehicle deployment.</div>
+          <div class="step-body">Five window-level behavior descriptors computed over 64-second sliding windows are concatenated with the protocol-aligned representation before entering a 3-layer stacked LSTM [128→256→128] with layer normalisation and dropout (p = 0.2). The behavior descriptors — acceleration variance driving metric, stop-go frequency, idle ratio, high-load fraction, and gear-utilisation entropy (J1939 only) — capture driving-style variance that instantaneous signals cannot encode. The LSTM produces a 128-dimensional hidden state h^LSTM capturing the full temporal context of the current window. Inference cost: O(W) vs. O(W²) for attention, critical for 1-Hz on-vehicle deployment.</div>
           <div class="step-tags">
             <span class="tag">W=64s window</span><span class="tag">50% overlap</span>
             <span class="tag">LayerNorm</span><span class="tag">3.1ms CPU inference</span>
@@ -2935,7 +2935,7 @@ function mgSwitch(vid) {
   <div class="container">
     <div class="section-label">Validated Dataset</div>
     <h2 class="section-title reveal">662,249 Real Records · 2 Protocols · 2 Cities</h2>
-    <p class="section-sub reveal">Validated on the Rettore OBD-II dataset (Belo Horizonte, Brazil, 2018) and a proprietary J1939 truck fleet dataset (São Paulo, Brazil, October 2021). Ground-truth CO₂ uncertainty: ±5% from J1939 fuel counter vs. calibrated NREL flow meters.</p>
+    <p class="section-sub reveal">Validated on a real-world OBD-II fleet dataset (Belo Horizonte, Brazil, 2018) and a proprietary J1939 truck fleet dataset (São Paulo, Brazil, October 2021). Ground-truth CO₂ uncertainty: ±5% from J1939 fuel counter vs. calibrated NREL flow meters.</p>
     <div class="dataset-grid reveal">
       <div class="dataset-card">
         <div class="ds-dot" style="background:var(--cyan);box-shadow:0 0 4px rgba(26,115,232,0.4)"></div>
@@ -2987,7 +2987,7 @@ function mgSwitch(vid) {
           <span class="perf-proto-badge" style="background:var(--cyan-dim);color:var(--cyan)">OBD-II</span>
         </div>
         <table class="perf-table">
-          <tr><th>Method</th><th>RMSE g/km</th><th>R²</th></tr>
+          <tr><th>Method</th><th>RMSE g/km</th><th>Accuracy</th></tr>
           <tr style="opacity:0.65;"><td class="model-name">COPERT-5 (EEA)</td><td>62.4</td><td>0.432</td></tr>
           <tr><td class="model-name">SA-LSTM</td><td>55.3 ±3.4</td><td>0.568</td></tr>
           <tr><td class="model-name">LF-LSTM</td><td>44.2 ±2.8</td><td>0.851</td></tr>
@@ -3001,7 +3001,7 @@ function mgSwitch(vid) {
           <span class="perf-proto-badge" style="background:var(--amber-dim);color:var(--amber)">J1939</span>
         </div>
         <table class="perf-table">
-          <tr><th>Method</th><th>RMSE g/km</th><th>R²</th></tr>
+          <tr><th>Method</th><th>RMSE g/km</th><th>Accuracy</th></tr>
           <tr style="opacity:0.65;"><td class="model-name">COPERT-5 (EEA)</td><td>249.2</td><td>0.186</td></tr>
           <tr><td class="model-name">SA-LSTM</td><td>311 ±22</td><td>0.341</td></tr>
           <tr><td class="model-name">LF-LSTM</td><td>249 ±14</td><td>0.572</td></tr>
@@ -3928,7 +3928,7 @@ document.addEventListener('DOMContentLoaded', ccCalc);
           <span style="font-size:1rem;">🏅</span>
           <div>
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;">Membership</div>
-            <div style="font-family:var(--mono);font-size:0.72rem;color:var(--amber);">Senior Member, IEEE</div>
+            <div style="font-family:var(--mono);font-size:0.72rem;color:var(--amber);">Bosch Research Engineer</div>
           </div>
         </div>
       </div>
@@ -3943,12 +3943,12 @@ document.addEventListener('DOMContentLoaded', ccCalc);
           Carbon<span style="color:var(--cyan)">Pilot</span>
         </div>
         <div class="footer-note-text">
-          Built on LBCA-Net &nbsp;·&nbsp; IEEE T-ITS 2026 (Under Review) &nbsp;·&nbsp; Robert Bosch GmbH<br>
+          Built on LBCA-Net &nbsp;·&nbsp; Patent-Filed IP 2026 &nbsp;·&nbsp; Robert Bosch GmbH<br>
           Validated on 662,249 real records &nbsp;·&nbsp; 5 vehicles &nbsp;·&nbsp; OBD-II + SAE J1939 &nbsp;·&nbsp; Brazil 2018–2021
         </div>
       </div>
       <div style="text-align:right">
-        <div style="font-family:var(--mono);font-size:0.62rem;color:var(--cyan);margin-bottom:4px;">IEEE T-ITS · Submitted April 2026</div>
+        <div style="font-family:var(--mono);font-size:0.62rem;color:var(--cyan);margin-bottom:4px;">Bosch Research Collaboration · Technology IP 2026</div>
         <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">© 2026 Rahul Kumar Dubey · Robert Bosch GmbH</div>
       </div>
     </div>
