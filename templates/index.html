@@ -706,7 +706,7 @@ footer {
       <div class="problem-card">
         <div class="prob-icon">⛽</div>
         <div class="prob-title">Fuel Sensor Lock-In</div>
-        <div class="prob-body">Many existing CO₂ models require fuel-flow PID (0x5E) as input. This PID is frequently absent because the vehicle ECU does not expose it — creating a significant deployment barrier. CarbonPilot is trained and deployed without this PID at inferencers, creating a $200–$500/vehicle deployment barrier that eliminates most real-world fleet deployments before they start.</div>
+        <div class="prob-body">Many existing CO₂ models require fuel-flow PID (0x5E) as input. This PID is frequently absent because the vehicle ECU does not expose it — creating a significant deployment barrier. CarbonPilot eliminates this dependency entirely — no fuel-flow sensor required at inference time.</div>
       </div>
       <div class="problem-card">
         <div class="prob-icon">⚡</div>
@@ -765,7 +765,7 @@ footer {
       <div class="usp-card">
         <div class="usp-num">05 / 06</div>
         <div class="usp-icon">🧠</div>
-        <div class="usp-title">Behavior-Aware Temporal Features</div>
+        <div class="usp-title">Locality-Bounded Temporal Features</div>
         <div class="usp-body">Five window-level driving descriptors (acceleration volatility, stop-go frequency, idle ratio, high-load fraction, gear-utilisation entropy) capture driving-style variance absent from instantaneous engine signals. Acceleration variance alone contributes +3.8 g/km RMSE when removed from cars; high-load fraction is the top truck predictor at +4.2 g/km.</div>
         <span class="usp-badge">−13.8% car RMSE</span>
       </div>
@@ -871,7 +871,7 @@ footer {
 <section id="architecture">
   <div class="container">
     <div class="section-label">System Architecture</div>
-    <h2 class="section-title reveal">LBCA-Net: Leakage-Free Behavior-Aware Cross-class Adaptive Network</h2>
+    <h2 class="section-title reveal">LBCA-Net: Locality-Bounded Contextual Attention Network</h2>
     <p class="section-sub reveal">A five-component deep learning architecture operating end-to-end from raw CAN bus signals to CSRD-compliant emission reports at 1-Hz resolution with 3.1ms inference latency on commodity CPU hardware.</p>
     <div class="arch-diagram reveal">
       <svg class="arch-svg" viewBox="0 0 960 420" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2256,7 +2256,7 @@ if (archEl) archObs.observe(archEl);
 <!-- ─── VEHICLE MAP ──────────────────────────────────────────────────────────── -->
 <section id="map-section" style="background:var(--bg);border-top:1px solid var(--border);padding:80px 0;">
   <div class="container">
-    <div class="section-label">Real GPS Coordinates · Brazil 2018–2021</div>
+    <div class="section-label">Real GPS Coordinates · Brazil 2018–2021 · India 2025</div>
     <h2 class="section-title reveal">Live Vehicle Position Map</h2>
     <p class="section-sub reveal">Real recorded GPS trajectories from the paper's dataset. Select a vehicle to track its position and visualise CO₂ intensity along the route — green (low) → amber → red (high).</p>
 
@@ -2772,7 +2772,7 @@ if (archEl) archObs.observe(archEl);
             </div>
             <div style="background:var(--bg2);border-radius:6px;padding:10px;text-align:center;">
               <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);">Idle CO₂</div>
-              <div style="font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--text);">17.7</div>
+              <div style="font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--text);">26.1</div>
               <div style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">g/min</div>
             </div>
           </div>
@@ -3904,23 +3904,23 @@ document.addEventListener('DOMContentLoaded', ccCalc);
       <!-- Contact channels -->
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
         <!-- Mobile -->
-        <a href="tel:+918527457072" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(0,229,255,0.25);border-radius:6px;text-decoration:none;background:var(--bg2);transition:all 0.2s;"
+        <a href="https://www.linkedin.com/in/rahul-kumar-dubey" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(0,229,255,0.25);border-radius:6px;text-decoration:none;background:var(--bg2);transition:all 0.2s;"
            onmouseover="this.style.borderColor='var(--cyan)';this.style.background='var(--cyan-dim)'"
            onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--bg2)'">
           <span style="font-size:1rem;">📱</span>
           <div>
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;">Mobile</div>
-            <div style="font-family:var(--mono);font-size:0.72rem;color:var(--text);">+91 852 745 7072</div>
+            <div style="font-family:var(--mono);font-size:0.72rem;color:var(--text);">Bangalore, India</div>
           </div>
         </a>
         <!-- Email -->
-        <a href="mailto:RahulKumar.Dubey@in.bosch.com" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(0,229,255,0.25);border-radius:6px;text-decoration:none;background:var(--bg2);transition:all 0.2s;"
+        <a href="https://www.linkedin.com/in/rahul-kumar-dubey" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(0,229,255,0.25);border-radius:6px;text-decoration:none;background:var(--bg2);transition:all 0.2s;"
            onmouseover="this.style.borderColor='var(--cyan)';this.style.background='var(--cyan-dim)'"
            onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--bg2)'">
           <span style="font-size:1rem;">✉</span>
           <div>
             <div style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;">Email</div>
-            <div style="font-family:var(--mono);font-size:0.72rem;color:var(--cyan);">RahulKumar.Dubey@in.bosch.com</div>
+            <div style="font-family:var(--mono);font-size:0.72rem;color:var(--cyan);">LinkedIn Profile</div>
           </div>
         </a>
         <!-- IEEE Badge -->
@@ -3944,7 +3944,7 @@ document.addEventListener('DOMContentLoaded', ccCalc);
         </div>
         <div class="footer-note-text">
           Built on LBCA-Net &nbsp;·&nbsp; Patent-Filed IP 2026 &nbsp;·&nbsp; Robert Bosch GmbH<br>
-          Validated on 662,249 real records &nbsp;·&nbsp; 5 vehicles &nbsp;·&nbsp; OBD-II + SAE J1939 &nbsp;·&nbsp; Brazil 2018–2021
+          Validated on 662,249 real records &nbsp;·&nbsp; 5 vehicles &nbsp;·&nbsp; OBD-II + SAE J1939 + MG-CAN &nbsp;·&nbsp; Brazil 2018–2021 · India 2025
         </div>
       </div>
       <div style="text-align:right">
