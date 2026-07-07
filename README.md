@@ -737,32 +737,32 @@ footer {
       <!-- ── Idle Reality Data (Argonne / DOE verified) ── -->
       <div style="margin-top:56px" class="reveal">
         <div class="section-label" style="margin-bottom:20px">
-          Real Fleet Numbers · Source-Verified
+          Real Fleet Numbers &middot; Primary-Source Verified
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
-          <div style="background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--amber);padding:22px 20px;border-radius:4px">
+        <div style="display:flex;flex-wrap:wrap;gap:16px">
+          <div style="flex:1;min-width:210px;background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--amber);padding:22px 20px;border-radius:4px">
             <div style="font-family:var(--display);font-size:2rem;font-weight:700;color:var(--amber)">6 hrs/day</div>
             <div style="color:var(--text);font-weight:600;margin:6px 0 4px">Trucks idle on average</div>
             <div style="color:var(--text-2);font-size:0.78rem;line-height:1.5">Long-haul trucks idle 6 hours per day or 1,830 hours per year</div>
-            <div style="color:var(--text-3);font-size:0.68rem;margin-top:8px;font-family:var(--mono)">Argonne National Laboratory · anl.gov/esia/idle-reduction-research</div>
+            <div style="color:var(--text-3);font-size:0.68rem;margin-top:8px;font-family:var(--mono)">Argonne National Laboratory &middot; anl.gov/esia/idle-reduction-research</div>
           </div>
-          <div style="background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--amber);padding:22px 20px;border-radius:4px">
-            <div style="font-family:var(--display);font-size:2rem;font-weight:700;color:var(--amber)">$4K–$7K</div>
-            <div style="color:var(--text);font-weight:600;margin:6px 0 4px">Wasted per truck per year</div>
-            <div style="color:var(--text-2);font-size:0.78rem;line-height:1.5">~1,500 gallons of diesel per truck annually · equivalent to ~200,000 miles of engine wear (est.)</div>
-            <div style="color:var(--text-3);font-size:0.68rem;margin-top:8px;font-family:var(--mono)">DOE Fact #861 × Argonne · Rahman et al. 2013 Energy Conv. &amp; Mgmt.</div>
-          </div>
-          <div style="background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--amber);padding:22px 20px;border-radius:4px">
+          <div style="flex:1;min-width:210px;background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--amber);padding:22px 20px;border-radius:4px">
             <div style="font-family:var(--display);font-size:2rem;font-weight:700;color:var(--amber)">0.8 gal/hr</div>
             <div style="color:var(--text);font-weight:600;margin:6px 0 4px">Diesel burned at idle</div>
-            <div style="color:var(--text-2);font-size:0.78rem;line-height:1.5">Per heavy-duty truck engine, no accessories. With AC/heat: 1.0–1.5 gal/hr</div>
-            <div style="color:var(--text-3);font-size:0.68rem;margin-top:8px;font-family:var(--mono)">US DOE Fact #861 · energy.gov · February 2015</div>
+            <div style="color:var(--text-2);font-size:0.78rem;line-height:1.5">Per heavy-duty truck engine. No accessories. With AC/heat: 1.0&ndash;1.5 gal/hr (3.8&ndash;5.7 L/hr)</div>
+            <div style="color:var(--text-3);font-size:0.68rem;margin-top:8px;font-family:var(--mono)">US DOE Fact #861 &middot; energy.gov &middot; February 2015</div>
           </div>
-          <div style="background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--cyan);padding:22px 20px;border-radius:4px">
-            <div style="font-family:var(--display);font-size:2rem;font-weight:700;color:var(--cyan)">$3 billion</div>
-            <div style="color:var(--text);font-weight:600;margin:6px 0 4px">US fleet idle cost annually</div>
-            <div style="color:var(--text-2);font-size:0.78rem;line-height:1.5">1+ million long-haul trucks consume over 1 billion gallons at rest stops every year</div>
-            <div style="color:var(--text-3);font-size:0.68rem;margin-top:8px;font-family:var(--mono)">Argonne National Laboratory · DOE Alt. Fuels Data Center · afdc.energy.gov</div>
+          <div style="flex:1;min-width:210px;background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--amber);padding:22px 20px;border-radius:4px">
+            <div style="font-family:var(--display);font-size:2rem;font-weight:700;color:var(--amber)">~1,500 gal/yr</div>
+            <div style="color:var(--text);font-weight:600;margin:6px 0 4px">Diesel burned per truck annually</div>
+            <div style="color:var(--text-2);font-size:0.78rem;line-height:1.5">0.8 gal/hr &times; 1,830 idle hrs &asymp; 1,500 gallons of diesel per long-haul truck</div>
+            <div style="color:var(--text-3);font-size:0.68rem;margin-top:8px;font-family:var(--mono)">US DOE / Argonne &middot; afdc.energy.gov &middot; 2015</div>
+          </div>
+          <div style="flex:1;min-width:210px;background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--amber);padding:22px 20px;border-radius:4px">
+            <div style="font-family:var(--display);font-size:2rem;font-weight:700;color:var(--amber)">$4K&ndash;$7K</div>
+            <div style="color:var(--text);font-weight:600;margin:6px 0 4px">Wasted per truck per year</div>
+            <div style="color:var(--text-2);font-size:0.78rem;line-height:1.5">Idle fuel plus accelerated engine wear &mdash; est. equivalent to 200,000 miles of wear</div>
+            <div style="color:var(--text-3);font-size:0.68rem;margin-top:8px;font-family:var(--mono)">ScienceDirect &middot; doi.org/10.1016/j.enconman.2013.03.016</div>
           </div>
         </div>
       </div>
@@ -812,7 +812,7 @@ footer {
       <div class="usp-card">
         <div class="usp-num">05 / 06</div>
         <div class="usp-icon">🧠</div>
-        <div class="usp-title">Leakage-Free Temporal Features</div>
+        <div class="usp-title">Locality-Bounded Temporal Features</div>
         <div class="usp-body">Five window-level driving descriptors (acceleration volatility, stop-go frequency, idle ratio, high-load fraction, gear-utilisation entropy) capture driving-style variance absent from instantaneous engine signals. Acceleration variance alone contributes +3.8 g/km RMSE when removed from cars; high-load fraction is the top truck predictor at +4.2 g/km.</div>
         <span class="usp-badge">−13.8% car RMSE</span>
       </div>
@@ -918,7 +918,7 @@ footer {
 <section id="architecture">
   <div class="container">
     <div class="section-label">System Architecture</div>
-    <h2 class="section-title reveal">LBCA-Net: Leakage-Free Behavior-Aware Cross-class Adaptive Network</h2>
+    <h2 class="section-title reveal">LBCA-Net: Locality-Bounded Contextual Attention Network</h2>
     <p class="section-sub reveal">A five-component deep learning architecture operating end-to-end from raw CAN bus signals to CSRD-compliant emission reports at 1-Hz resolution with 3.1ms inference latency on commodity CPU hardware.</p>
     <div class="arch-diagram reveal">
       <svg class="arch-svg" viewBox="0 0 960 420" fill="none" xmlns="http://www.w3.org/2000/svg">
