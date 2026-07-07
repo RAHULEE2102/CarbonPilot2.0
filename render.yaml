@@ -1,1 +1,11 @@
-web: uvicorn main:app --host 0.0.0.0 --port $PORT
+services:
+  - type: web
+    name: carbonpilot
+    env: python
+    plan: free
+    rootDir: carbonpilot
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
